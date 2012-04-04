@@ -50,7 +50,7 @@
     self.tintColor = tintColor;
 }
 
-- (void)setFeverTitleTextAttributes
+- (void)setTitleTextAttributes
 {
     if ([self respondsToSelector:@selector(setTitleTextAttributes:)]) // Only iOS5+
     {
