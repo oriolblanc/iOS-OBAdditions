@@ -1,3 +1,4 @@
+
 //
 //  MKMapView+OBAdditions.m
 //
@@ -35,14 +36,15 @@
     
     for (id <MKAnnotation>annotation in self.annotations)
     {
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-        [locationsToConsider addObject:location];
-        [location release];
-        
-        break;
+        if ([self isValidCoordinate:annotation.coordinate])
+        {
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+            [locationsToConsider addObject:location];
+            [location release];
+        }
     }
     
-    if (self.userLocation)
+    if (self.userLocation && [self isValidCoordinate:self.userLocation.coordinate])
     {
         [locationsToConsider addObject:self.userLocation];                                      
     }
@@ -63,7 +65,8 @@
     MKCoordinateRegion region;
     region.center.latitude = (topLeftCoord.latitude + bottomRightCoord.latitude) / 2.0;
     region.center.longitude = (topLeftCoord.longitude + bottomRightCoord.longitude) / 2.0;
-    region.span.latitudeDelta = meters / 111319.5;
+    NSUInteger paddingMeters = 20;
+    region.span.latitudeDelta = (meters + paddingMeters) / 111319.5;
     region.span.longitudeDelta = 0.0;
     
     if ([self isRegionValid:region])
@@ -88,12 +91,20 @@
     }
 }
 
+- (CLLocationDistance)distanceFromUserLocationToCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    CLLocation *pinLocation = [[CLLocation alloc ] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    CLLocationDistance distance = [pinLocation distanceFromLocation:self.userLocation.location];
+    [pinLocation release];
+    
+    return distance;
+}
+
 - (BOOL)isCoordinateInsideMap:(CLLocationCoordinate2D)coordinate 
 {
-    
     CLLocationCoordinate2D topLeftCoord = [self getTopLeftCoordinate];
     CLLocationCoordinate2D bottomRightCoord = [self getBottomRightCoordinate];
-        
+    
     BOOL isInsideLongitude = coordinate.longitude >= topLeftCoord.longitude && coordinate.longitude <= bottomRightCoord.longitude;
     BOOL isInsideLatitude = coordinate.latitude <= topLeftCoord.latitude && coordinate.latitude >= bottomRightCoord.latitude;
     
@@ -105,23 +116,28 @@
 - (CLLocationCoordinate2D)getTopLeftCoordinate
 {
     MKCoordinateRegion region = self.region;
-
+    
     CLLocationCoordinate2D topLeftCoord; 
     topLeftCoord.longitude = region.center.longitude - region.span.longitudeDelta / 2.0;  
     topLeftCoord.latitude = region.center.latitude + region.span.latitudeDelta / 2.0; 
-
+    
     return topLeftCoord;
 }
 
 - (CLLocationCoordinate2D)getBottomRightCoordinate
 {
     MKCoordinateRegion region = self.region;
-
+    
     CLLocationCoordinate2D bottomRightCoord; 
     bottomRightCoord.longitude = region.center.longitude + region.span.longitudeDelta / 2.0; 
     bottomRightCoord.latitude = region.center.latitude - region.span.latitudeDelta / 2.0; 
-
+    
     return bottomRightCoord;
+}
+
+- (BOOL)isValidCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    return coordinate.longitude != 0 && coordinate.latitude != 0;
 }
 
 @end

@@ -14,4 +14,6 @@
 
 - (BOOL)isCoordinateInsideMap:(CLLocationCoordinate2D)coordinate;
 
+- (CLLocationDistance)distanceFromUserLocationToCoordinate:(CLLocationCoordinate2D)coordinate;
+
 @end
