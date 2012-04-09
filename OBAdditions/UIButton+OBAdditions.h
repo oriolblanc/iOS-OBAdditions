@@ -5,10 +5,11 @@
 //  Copyright (c) 2012 Oriol Blanc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface UIButton (OBAdditions)
 
 - (void)setTitle:(NSString *)title andSubtitle:(NSString *)subtitle forState:(UIControlState)state;
+
+- (UILabel *)additionalTitleLabel;
+- (UILabel *)additionalSubtitleLabel;
 
 @end

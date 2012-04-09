@@ -19,11 +19,7 @@
         return;
     }
     
-    LogFrame(button.frame);
     self.titleView = button;
-//    UIView *aTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, button.frame.size.width, button.frame.size.height)];
-//    self.titleView = aTitleView;
-//    [aTitleView release];
 }
 
 - (void)setImageForTitleView:(UIImage*)image

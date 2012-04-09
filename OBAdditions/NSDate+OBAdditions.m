@@ -93,7 +93,6 @@
     NSString *formattedDateString = [dateFormatter stringFromDate:self];
     
     return formattedDateString;
-
 }
 
 - (NSString *)remainingTimeString
@@ -109,22 +108,22 @@
     int minutes = floor(timeIntervalFromNow / 60);
     
     if (years >= 1) {
-        NSString *timelapse = years == 1 ? [Theme getString4Key:@"Year"] : [Theme getString4Key:@"Years"];
+        NSString *timelapse = years == 1 ? NSLocalizedString(@"Year", @"") : NSLocalizedString(@"Years", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", years, timelapse];
     } else if (months >= 1) {
-        NSString *timelapse = months == 1 ? [Theme getString4Key:@"Month"] : [Theme getString4Key:@"Months"];
+        NSString *timelapse = months == 1 ? NSLocalizedString(@"Month", @"") : NSLocalizedString(@"Months", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", months, timelapse];        
     } else if (weeks >= 1) {
-        NSString *timelapse = weeks == 1 ? [Theme getString4Key:@"Week"] : [Theme getString4Key:@"Weeks"];
+        NSString *timelapse = weeks == 1 ? NSLocalizedString(@"Week", @"") : NSLocalizedString(@"Weeks", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", weeks, timelapse];        
     } else if (days >= 1) {
-        NSString *timelapse = days == 1 ? [Theme getString4Key:@"Day"] : [Theme getString4Key:@"Days"];
+        NSString *timelapse = days == 1 ? NSLocalizedString(@"Day", @"") : NSLocalizedString(@"Days", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", days, timelapse];        
     } else if (hours >= 1) {
-        NSString *timelapse = hours == 1 ? [Theme getString4Key:@"Hour"] : [Theme getString4Key:@"Hours"];
+        NSString *timelapse = hours == 1 ? NSLocalizedString(@"Hour", @"") : NSLocalizedString(@"Hours", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", hours, timelapse];        
     } else if (minutes >= 1) {
-        NSString *timelapse = minutes == 1 ? [Theme getString4Key:@"Minute"] : [Theme getString4Key:@"Minutes"];
+        NSString *timelapse = minutes == 1 ? NSLocalizedString(@"Minute", @"") : NSLocalizedString(@"Minutes", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", minutes, timelapse];    
     } else {
         timeRemainingString = NSLocalizedString(@"NoTime", nil);
@@ -148,25 +147,25 @@
     int seconds = timeIntervalFromNow;
     
     if (years >= 1) {
-        NSString *timelapse = years == 1 ? [Theme getString4Key:@"Year"] : [Theme getString4Key:@"Years"];
+        NSString *timelapse = years == 1 ? NSLocalizedString(@"Year", @"") : NSLocalizedString(@"Years", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", years, timelapse];
     } else if (months >= 1) {
-        NSString *timelapse = months == 1 ? [Theme getString4Key:@"Month"] : [Theme getString4Key:@"Months"];
+        NSString *timelapse = months == 1 ? NSLocalizedString(@"Month", @"") : NSLocalizedString(@"Months", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", months, timelapse];        
     } else if (weeks >= 1) {
-        NSString *timelapse = weeks == 1 ? [Theme getString4Key:@"Week"] : [Theme getString4Key:@"Weeks"];
+        NSString *timelapse = weeks == 1 ? NSLocalizedString(@"Week", @"") : NSLocalizedString(@"Weeks", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", weeks, timelapse];        
     } else if (days >= 1) {
-        NSString *timelapse = days == 1 ? [Theme getString4Key:@"Day"] : [Theme getString4Key:@"Days"];
+        NSString *timelapse = days == 1 ? NSLocalizedString(@"Day", @"") : NSLocalizedString(@"Days", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", days, timelapse];        
     } else if (hours >= 1) {
-        NSString *timelapse = hours == 1 ? [Theme getString4Key:@"Hour"] : [Theme getString4Key:@"Hours"];
+        NSString *timelapse = hours == 1 ? NSLocalizedString(@"Month", @"") : NSLocalizedString(@"Hours", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", hours, timelapse];        
     } else if (minutes >= 1) {
-        NSString *timelapse = minutes == 1 ? [Theme getString4Key:@"Minute"] : [Theme getString4Key:@"Minutes"];
+        NSString *timelapse = minutes == 1 ? NSLocalizedString(@"Minute", @"") : NSLocalizedString(@"Minutes", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", minutes, timelapse];    
     } else {
-        NSString *timelapse = seconds == 1 ? [Theme getString4Key:@"Second"] : [Theme getString4Key:@"Seconds"];
+        NSString *timelapse = seconds == 1 ? NSLocalizedString(@"Second", @"") : NSLocalizedString(@"Seconds", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", seconds, timelapse]; 
     }
     
