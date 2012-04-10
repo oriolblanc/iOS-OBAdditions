@@ -15,7 +15,7 @@
     if (!image) 
     {
         NSLog(@"error al cargar la imagen %@", imageName);
-        [self passCheckpoint:nil];
+        [self ilegalStepWarningWithString:[NSString stringWithFormat:@"[NOTFOUND] image %@", imageName]];
     }
 	return image;
 }
@@ -27,14 +27,14 @@
     if ([string isEqualToString:key])
     {
         NSLog(@"Error at get translation for key = %@", key); 
-        [self passCheckpoint:nil];
+        [self ilegalStepWarningWithString:[NSString stringWithFormat:@"[NOTFOUND] translation key %@", key]];
     }
     
     return string;
 }
 
 // you can override this method
-+ (void)passCheckpoint:(NSString *)checkpoint
++ (void)ilegalStepWarningWithString:(NSString *)string
 {
 
 }

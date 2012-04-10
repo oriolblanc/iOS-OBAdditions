@@ -11,6 +11,6 @@
 
 + (NSString *)localizedStringWithKey:(NSString *)key;
 
-+ (void)passCheckpoint:(NSString *)checkpoint;
++ (void)ilegalStepWarningWithString:(NSString *)string;
 
 @end
