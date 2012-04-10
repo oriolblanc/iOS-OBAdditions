@@ -13,9 +13,14 @@
 
 @implementation NSString (OBAdditions) 
 
-- (NSString *)stringByParsingINGJSON:(NSString *)key
+- (BOOL)containsString:(NSString *)string options:(NSStringCompareOptions)options 
 {
-    return self;
+    return [self rangeOfString:string options:options].location != NSNotFound;
+}
+
+- (BOOL)containsString:(NSString *) string 
+{
+    return [self containsString:string options:0];
 }
 
 - (NSDate *)getDateFromJSON

@@ -7,7 +7,11 @@
 
 @interface NSString (OBAdditions) 
 
-- (NSString *)stringByParsingINGJSON:(NSString *)key;
+// check if string contains a substring
+- (BOOL)containsString:(NSString *)string;
+- (BOOL)containsString:(NSString *)string
+               options:(NSStringCompareOptions)options;
+
 - (NSDate *)getDateFromJSON;
 - (NSString *)currencyCodeToSymbol;
 - (NSString *)replaceCommasByPoints;
@@ -15,9 +19,12 @@
 - (NSString *)deleteSpace;
 - (NSString *)stringToSha1;
 - (NSString *)stringToBase64;
+
+// Check if string is empty
 - (BOOL)isEmpty;
 - (BOOL)isNotEmpty;
 
+// Random
 + (NSString *)randomStringWithLength:(int)length;
 + (NSString *)randomStringWithLengthBetween:(int)minLength and:(int)maxLength;
 
