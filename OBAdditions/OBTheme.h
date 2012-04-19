@@ -5,12 +5,17 @@
 //  Copyright 2011 Oriol Blanc All rights reserved.
 //
 
+static NSString * const kColorKeySubtitleShadowColor = @"kColorKeySubtitleShadowColor";
+
 @interface OBTheme : NSObject
 
-+ (UIImage *)imageNamed:(NSString *)imageNamed;
++ (UIColor *)colorForKey:(NSString *)key;
 
++ (UIImage *)imageNamed:(NSString *)imageNamed;
 + (NSString *)localizedStringWithKey:(NSString *)key;
 
 + (void)ilegalStepWarningWithString:(NSString *)string;
+
+
 
 @end
