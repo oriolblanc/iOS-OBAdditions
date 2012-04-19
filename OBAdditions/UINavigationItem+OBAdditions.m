@@ -59,28 +59,28 @@
     _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
     _headerTitleSubtitleView.autoresizesSubviews = YES;
     
-    CGRect titleFrame = CGRectMake(0, 2, 200, 24);  
+    CGRect titleFrame = CGRectMake(0, 0, 200, 30);  
         
     UILabel *titleView = [[[UILabel alloc] initWithFrame:titleFrame] autorelease];
     [titleView setTag:kLabelTitle];
     titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:14];
+    titleView.font = [UIFont boldSystemFontOfSize:15];
     titleView.textAlignment = UITextAlignmentCenter;
     titleView.textColor = [UIColor whiteColor];
-    titleView.shadowColor = [UIColor darkGrayColor];
+    titleView.shadowColor = [Theme colorForKey:kColorKeySubtitleShadowColor];
     titleView.shadowOffset = CGSizeMake(0, -1);
     titleView.text = @"";
     titleView.adjustsFontSizeToFitWidth = YES;
     [_headerTitleSubtitleView addSubview:titleView];
     
-    CGRect subtitleFrame = CGRectMake(0, 20, 200, 22);   
+    CGRect subtitleFrame = CGRectMake(0, 19, 200, 22);   
     UILabel *subtitleView = [[[UILabel alloc] initWithFrame:subtitleFrame] autorelease];
     [subtitleView setTag:kLabelSubtitle];
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:10];
     subtitleView.textAlignment = UITextAlignmentCenter;
     subtitleView.textColor = [UIColor colorWithWholeRed:217 wholeGreen:198 wholeBlue:234 alpha:1];
-    subtitleView.shadowColor = [UIColor darkGrayColor];
+    subtitleView.shadowColor = [Theme colorForKey:kColorKeySubtitleShadowColor];
     subtitleView.shadowOffset = CGSizeMake(0, -1);
     subtitleView.text = @"";
     subtitleView.adjustsFontSizeToFitWidth = YES;
