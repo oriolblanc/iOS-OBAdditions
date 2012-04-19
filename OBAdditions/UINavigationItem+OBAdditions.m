@@ -40,7 +40,7 @@
         
     if (headerTitleSubtitleView == nil)
     {
-        headerTitleSubtitleView = [self initHeaderTitleAndSubtitleView];
+        headerTitleSubtitleView = [self headerTitleAndSubtitleView];
     }
 
     UILabel *titleView = (UILabel *) [headerTitleSubtitleView viewWithTag:kLabelTitle];
@@ -51,10 +51,10 @@
     self.titleView = headerTitleSubtitleView;
 }
 
-- (UIView*)initHeaderTitleAndSubtitleView
+- (UIView *)headerTitleAndSubtitleView
 {
     CGRect headerTitleSubtitleFrame = CGRectMake(0, 0, 200, 44);    
-    UIView* _headerTitleSubtitleView = [[[UILabel alloc] initWithFrame:headerTitleSubtitleFrame] autorelease];
+    UIView *_headerTitleSubtitleView = [[[UILabel alloc] initWithFrame:headerTitleSubtitleFrame] autorelease];
     [_headerTitleSubtitleView setTag:kNavBarWithTitleAndSubtitle];
     _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
     _headerTitleSubtitleView.autoresizesSubviews = YES;

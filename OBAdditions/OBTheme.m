@@ -26,7 +26,7 @@
         
     if ([string isEqualToString:key])
     {
-        NSLog(@"Error at get translation for key = %@", key); 
+        //NSLog(@"Error at get translation for key = %@", key); 
         [self ilegalStepWarningWithString:[NSString stringWithFormat:@"[NOTFOUND] translation key %@", key]];
     }
     

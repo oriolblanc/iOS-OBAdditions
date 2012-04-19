@@ -120,7 +120,7 @@
         NSString *timelapse = days == 1 ? NSLocalizedString(@"Day", @"") : NSLocalizedString(@"Days", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", days, timelapse];        
     } else if (hours >= 1) {
-        NSString *timelapse = hours == 1 ? NSLocalizedString(@"Hour", @"") : NSLocalizedString(@"Hours", @"");
+        NSString *timelapse = hours == 1 ? NSLocalizedString(@"Hours", @"") : NSLocalizedString(@"Hour", @"");
         timeRemainingString = [NSString stringWithFormat:@"%d %@", hours, timelapse];        
     } else if (minutes >= 1) {
         NSString *timelapse = minutes == 1 ? NSLocalizedString(@"Minute", @"") : NSLocalizedString(@"Minutes", @"");

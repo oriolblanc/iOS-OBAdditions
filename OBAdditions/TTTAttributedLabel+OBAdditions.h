@@ -11,6 +11,7 @@
 
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color;
 - (void)setText:(NSString *)text boldRange:(NSRange)range boldRangeColor:(UIColor *)color;
+
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges;
 - (void)setText:(NSString *)text boldRange:(NSRange)range;
 
