@@ -67,7 +67,7 @@
     titleView.font = [UIFont boldSystemFontOfSize:15];
     titleView.textAlignment = UITextAlignmentCenter;
     titleView.textColor = [UIColor whiteColor];
-    titleView.shadowColor = [Theme colorForKey:kColorKeySubtitleShadowColor];
+    titleView.shadowColor = [OBTheme colorForKey:kColorKeySubtitleShadowColor];
     titleView.shadowOffset = CGSizeMake(0, -1);
     titleView.text = @"";
     titleView.adjustsFontSizeToFitWidth = YES;
@@ -80,7 +80,7 @@
     subtitleView.font = [UIFont boldSystemFontOfSize:10];
     subtitleView.textAlignment = UITextAlignmentCenter;
     subtitleView.textColor = [UIColor colorWithWholeRed:217 wholeGreen:198 wholeBlue:234 alpha:1];
-    subtitleView.shadowColor = [Theme colorForKey:kColorKeySubtitleShadowColor];
+    subtitleView.shadowColor = [OBTheme colorForKey:kColorKeySubtitleShadowColor];
     subtitleView.shadowOffset = CGSizeMake(0, -1);
     subtitleView.text = @"";
     subtitleView.adjustsFontSizeToFitWidth = YES;

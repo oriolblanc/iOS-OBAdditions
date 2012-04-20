@@ -20,6 +20,7 @@
 #import "UINavigationItem+OBAdditions.h"
 #import "UITextField+OBAdditions.h"
 #import "UIView+OBAdditions.h"
+#import "UIImage+OBAdditions.h"
 
 // Log methods
 #define LogMethod()         NSLog(@"%@", NSStringFromSelector(_cmd));
