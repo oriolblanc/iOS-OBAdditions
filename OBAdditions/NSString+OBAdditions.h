@@ -21,8 +21,8 @@
 - (NSString *)stringToBase64;
 
 // Check if string is empty
-- (BOOL)isEmpty;
-- (BOOL)isNotEmpty;
++ (BOOL)isStringEmpty:(NSString *)aString;
++ (BOOL)isStringNotEmpty:(NSString *)aString;
 
 // Random
 + (NSString *)randomStringWithLength:(int)length;

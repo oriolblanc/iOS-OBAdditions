@@ -130,14 +130,29 @@
     return [[[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES] autorelease];
 }
 
-- (BOOL)isEmpty
++ (BOOL)isStringEmpty:(NSString *)aString
 {
-    return (self == nil || ![self isNotEmpty]); 
+    if ((NSNull *) aString == [NSNull null]) {
+        return YES;
+    }
+    
+    if (aString == nil) {
+        return YES;
+    } else if ([aString length] == 0) {
+        return YES;
+    } else {
+        aString = [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([aString length] == 0) {
+            return YES;
+        }
+    }
+    
+    return NO;  
 }
 
-- (BOOL)isNotEmpty
++ (BOOL)isStringNotEmpty:(NSString *)aString
 {
-    return (self != nil && self.length > 0); 
+    return ![NSString isStringEmpty:aString];
 }
 
 + (NSString *)randomStringWithLength:(int)length
