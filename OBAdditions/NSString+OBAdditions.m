@@ -41,6 +41,9 @@
 
 // "EUR" to "€"
 - (NSString *)currencyCodeToSymbol{
+    
+    static const NSString *kDefaultCurrency = @"€";
+
 	// http://www.xe.com/symbols.php
 	if ([@"EUR" compare:self] == NSOrderedSame){
 		return @"€";
@@ -60,7 +63,7 @@
 	if ([@"JPY" compare:self] == NSOrderedSame){
 		return @"¥";
 	}
-	return self;
+	return [NSString stringWithFormat:@"%@", kDefaultCurrency];
 }
 
 - (NSString *)replaceCommasByPoints
