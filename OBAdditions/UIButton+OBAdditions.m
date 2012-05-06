@@ -6,11 +6,47 @@
 //
 
 #import "UIButton+OBAdditions.h"
+#import <objc/runtime.h>
 
 #define kLabelTitleTag 1516
 #define kLabelSubtitleTag 2342
 
+static char UIButtonBlockKey;
+
+@interface UIButton()
+@property (nonatomic, copy) NSURL *imageURL;
+@end
+
 @implementation UIButton (OBAdditions)
+
++ (id)buttonWithType:(UIButtonType)buttonType tapCallback:(UIButtonCallback)_callback
+{
+    UIButton *button = [self buttonWithType:buttonType];
+    objc_setAssociatedObject(button, &UIButtonBlockKey, _callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    [button addTarget:button action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+}
+
+- (id)initWithFrame:(CGRect)frame tapCallback:(UIButtonCallback)_callback
+{
+    if ((self = [super initWithFrame:frame]))
+    {
+        objc_setAssociatedObject(self, &UIButtonBlockKey, _callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        [self addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return self;
+}
+
+- (void)buttonTapped
+{
+    UIButtonCallback callback = (UIButtonCallback)objc_getAssociatedObject(self, &UIButtonBlockKey);
+    if (callback)
+    {
+        callback(self);
+    }
+}
 
 - (void)setTitle:(NSString *)title andSubtitle:(NSString *)subtitle forState:(UIControlState)state
 {
