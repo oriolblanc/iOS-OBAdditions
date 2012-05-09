@@ -23,13 +23,7 @@
 
 + (UIImage *)imageNamed:(NSString *)imageName
 {
-    UIImage *image = [UIImage imageNamed:imageName];
-    if (!image) 
-    {
-        NSLog(@"error al cargar la imagen %@", imageName);
-        [self ilegalStepWarningWithString:[NSString stringWithFormat:@"[IMAGE_NOTFOUND] %@", imageName]];
-    }
-	return image;
+    return [UIImage imageNamed:imageName];
 }
 
 + (NSString *)localizedStringWithKey:(NSString *)key
@@ -38,7 +32,7 @@
         
     if ([string isEqualToString:key])
     {
-        //NSLog(@"Error at get translation for key = %@", key); 
+        NSLog(@"Error at get translation for key = %@", key); 
         [self ilegalStepWarningWithString:[NSString stringWithFormat:@"[TRANSLATION_NOTFOUND] key %@", key]];
     }
     
