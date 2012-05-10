@@ -13,10 +13,6 @@
 
 static char UIButtonBlockKey;
 
-@interface UIButton()
-@property (nonatomic, copy) NSURL *imageURL;
-@end
-
 @implementation UIButton (OBAdditions)
 
 + (id)buttonWithType:(UIButtonType)buttonType tapCallback:(UIButtonCallback)_callback
