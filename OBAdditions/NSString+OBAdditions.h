@@ -12,6 +12,8 @@
 - (BOOL)containsString:(NSString *)string
                options:(NSStringCompareOptions)options;
 
+- (NSString *)capitalizeFirstLetter;
+
 - (NSDate *)getDateFromJSON;
 - (NSString *)currencyCodeToSymbol;
 - (NSString *)replaceCommasByPoints;

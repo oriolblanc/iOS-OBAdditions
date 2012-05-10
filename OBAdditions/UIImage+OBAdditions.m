@@ -26,7 +26,7 @@
     UIImage *image = [self additionalImageNamed:imageName];
     if (!image) 
     {
-        NSLog(@"error al cargar la imagen %@", imageName);
+        NSLog(@"error al cargar la imagen '%@'", imageName);
         [OBTheme ilegalStepWarningWithString:[NSString stringWithFormat:@"[IMAGE_NOTFOUND] %@", imageName]];
     }
 	return image;
