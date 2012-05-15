@@ -60,12 +60,12 @@ static char UIButtonBlockKey;
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.font = [UIFont systemFontOfSize:10.0];
         titleLabel.textAlignment = UITextAlignmentCenter;
-        [titleLabel setText:title];
         
         [self addSubview:titleLabel];
         
         [titleLabel release];
     }
+    [titleLabel setText:title];
     
     if (subtitleLabel == nil)
     {
@@ -74,11 +74,11 @@ static char UIButtonBlockKey;
         subtitleLabel.backgroundColor = [UIColor clearColor];
         subtitleLabel.font = [UIFont boldSystemFontOfSize:17.0];
         subtitleLabel.textAlignment = UITextAlignmentCenter;
-        [subtitleLabel setText:subtitle];    
         
         [self addSubview:subtitleLabel];
         [subtitleLabel release];
     }
+    [subtitleLabel setText:subtitle];
 }
 
 - (UILabel *)additionalTitleLabel
