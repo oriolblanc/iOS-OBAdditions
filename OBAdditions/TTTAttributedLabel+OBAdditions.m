@@ -9,12 +9,12 @@
 
 @implementation TTTAttributedLabel (OBAdditions)
 
-- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color
+- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize
 {
     [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         
         UIFont *boldFont = [UIFont boldSystemFontOfSize:self.font.pointSize];
-        CTFontRef font = CTFontCreateWithName((CFStringRef)boldFont.fontName, boldFont.pointSize, NULL);
+        CTFontRef font = CTFontCreateWithName((CFStringRef)boldFont.fontName, fontSize, NULL);
         CGColorRef boldRangeColor = color.CGColor;
         
         if (font)
@@ -43,9 +43,19 @@
     self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
+- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color 
+{
+    [self setText:text boldRanges:ranges boldRangesColor:color fontSize:self.font.pointSize];
+}
+
+- (void)setText:(NSString *)text boldRange:(NSRange)range boldRangeColor:(UIColor *)color fontSize:(CGFloat)fontSize
+{
+    [self setText:text boldRanges:[NSArray arrayWithObject:[NSValue valueWithRange:range]] boldRangesColor:color fontSize:fontSize];
+}
+
 - (void)setText:(NSString *)text boldRange:(NSRange)range boldRangeColor:(UIColor *)color
 {
-    [self setText:text boldRanges:[NSArray arrayWithObject:[NSValue valueWithRange:range]] boldRangesColor:color];
+    [self setText:text boldRanges:[NSArray arrayWithObject:[NSValue valueWithRange:range]] boldRangesColor:color fontSize:self.font.pointSize];
 }
 
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges
