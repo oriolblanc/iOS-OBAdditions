@@ -6,6 +6,7 @@
 //
 
 #import "UIColor+OBAdditions.h"
+#import <objc/runtime.h>
 
 @implementation UIColor (OBAdditions)
 
@@ -34,6 +35,30 @@
     }
     
     return [self colorWithWholeRed:[[colorFloatComponents objectAtIndex:0] intValue] wholeGreen:[[colorFloatComponents objectAtIndex:1] intValue] wholeBlue:[[colorFloatComponents objectAtIndex:2] intValue] alpha:1.0];
+}
+
++ (void)load {
+    Class c = (id)self;
+    
+    // Use class_getInstanceMethod for "normal" methods
+    Method m1 = class_getClassMethod(c, @selector(description));
+    Method m2 = class_getClassMethod(c, @selector(additionalDescription));
+    
+    // Swap the two methods.
+    method_exchangeImplementations(m1, m2);
+}
+
+- (NSString *)additionalDescription
+{
+    NSString *description = [self additionalDescription];
+    NSArray *items = [description componentsSeparatedByString:@" "];
+    
+    if (items != nil)
+    {
+//        items
+    }
+    
+    return [NSString stringWithFormat:@"[UIColor]\n\t%@\n\tRed: %@\n\tGreen: %@\n\tBlue: %@\n\tAlpha: %@", [items objectAtIndex:0], [items objectAtIndex:1], [items objectAtIndex:2], [items objectAtIndex:3], [items objectAtIndex:4]];
 }
 
 @end
