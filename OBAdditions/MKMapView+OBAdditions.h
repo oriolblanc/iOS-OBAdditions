@@ -11,6 +11,7 @@
 
 - (BOOL)isRegionValid:(MKCoordinateRegion)region;
 - (void)setMapCenter;
+- (void)setMapCenterAnimated:(BOOL)animated;
 
 - (BOOL)isCoordinateInsideMap:(CLLocationCoordinate2D)coordinate;
 
