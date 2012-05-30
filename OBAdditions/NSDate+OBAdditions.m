@@ -234,8 +234,6 @@
     
     NSDate *floorDate = [[[NSDate alloc] initWithTimeIntervalSinceReferenceDate:floorInterval] autorelease];
     
-    NSLog(@"floor %@",floorDate);
-    
     return floorDate;
 }
 
@@ -247,8 +245,6 @@
     NSDate *floorDate = [self floor];
     NSTimeInterval secondsInADay = 86400;
     NSDate *ceilDate = [floorDate dateByAddingTimeInterval:secondsInADay-1];
-    
-    NSLog(@"ceil %@", ceilDate);
     
     return ceilDate;    
 }
