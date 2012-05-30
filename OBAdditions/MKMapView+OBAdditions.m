@@ -18,6 +18,11 @@
 
 - (void)setMapCenter
 {
+    return [self setMapCenterAnimated:YES];
+}
+
+- (void)setMapCenterAnimated:(BOOL)animated
+{
     if ([self.annotations count] == 0)
     {
         return;   
@@ -70,7 +75,7 @@
     
     if ([self isRegionValid:region])
     {
-        [self setRegion:[self regionThatFits:region] animated:YES];
+        [self setRegion:[self regionThatFits:region] animated:animated];
     }
     else
     {
@@ -80,7 +85,7 @@
             MKCoordinateRegion userLocationRegion = MKCoordinateRegionMakeWithDistance(self.userLocation.coordinate, 100, 100);
             if ([self isRegionValid:userLocationRegion])
             {
-                [self setRegion:userLocationRegion animated:YES];
+                [self setRegion:userLocationRegion animated:animated];
             }
         }
         else
