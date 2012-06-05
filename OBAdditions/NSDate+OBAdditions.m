@@ -46,7 +46,7 @@
     return [[dateFormatter dateFromString:dateToTransform] retain];
 }
 
-- (NSUInteger)getDay
+- (NSUInteger)day
 {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
     return [components day];
@@ -62,13 +62,13 @@
     return res;
 }
 
-- (NSUInteger)getMonth
+- (NSUInteger)month
 {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
     return [components month];
 }
 
-- (NSUInteger)getYear
+- (NSUInteger)year
 {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
     return [components year];

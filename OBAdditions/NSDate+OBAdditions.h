@@ -10,10 +10,10 @@
 - (NSString *)formattedDateString;
 - (NSString *)formattedDateAndTimeString;
 - (id)initWithDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year;
-- (NSUInteger)getDay;
+- (NSUInteger)day;
 - (NSString *)getDayOfTheWeek;
-- (NSUInteger)getMonth;
-- (NSUInteger)getYear;
+- (NSUInteger)month;
+- (NSUInteger)year;
 - (NSString *)getTimeString;
 - (NSString *)stringByFormattedDate:(NSString *)formattedDate;
 
