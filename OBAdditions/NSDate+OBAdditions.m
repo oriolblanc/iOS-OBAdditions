@@ -176,8 +176,8 @@
 {
     NSDate * today = [NSDate date];
     
-    NSString * todayString = [[today description] substringToIndex:10];
-    NSString * selfString = [[self description] substringToIndex:10];
+    NSString * todayString = [[today descriptionWithLocale:[NSLocale systemLocale]] substringToIndex:12];
+    NSString * selfString = [[self descriptionWithLocale:[NSLocale systemLocale]] substringToIndex:12];
     
     return [selfString isEqualToString:todayString];
 }
@@ -186,16 +186,14 @@
 {
     NSDate * yesterday = [NSDate dateWithTimeIntervalSinceNow:86400];
     
-    NSString * yesterdayString = [[yesterday description] substringToIndex:10];
-    NSString * selfString = [[self description] substringToIndex:10];
+    NSString * yesterdayString = [[yesterday descriptionWithLocale:[NSLocale systemLocale]] substringToIndex:12];
+    NSString * selfString = [[self descriptionWithLocale:[NSLocale systemLocale]] substringToIndex:12];
     
     return [selfString isEqualToString:yesterdayString];
 }
 
 - (NSDate *)dateByMovingToBeginningOfDay
 {
-        NSLog(@"the current date is %@",self);
-    
     unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
     [parts setHour:0];
