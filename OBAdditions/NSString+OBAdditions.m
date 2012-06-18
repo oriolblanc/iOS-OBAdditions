@@ -38,15 +38,7 @@
 {
     NSNumberFormatter* numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
     
-    NSNumber* number = [numberFormatter numberFromString:self];
-    
-    if (number != nil) {
-        //do some stuff here      
-        return true;
-    }
-    
-    //or do some more stuff here
-    return false;
+    return [numberFormatter numberFromString:self] != nil;
 }
 
 - (NSString *)capitalizeFirstLetter
