@@ -34,6 +34,21 @@
     return [emailTest evaluateWithObject:self];
 }
 
+- (BOOL)isNumeric
+{
+    NSNumberFormatter* numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+    
+    NSNumber* number = [numberFormatter numberFromString:self];
+    
+    if (number != nil) {
+        //do some stuff here      
+        return true;
+    }
+    
+    //or do some more stuff here
+    return false;
+}
+
 - (NSString *)capitalizeFirstLetter
 {
     return  [self stringByReplacingCharactersInRange:NSMakeRange(0,1)  

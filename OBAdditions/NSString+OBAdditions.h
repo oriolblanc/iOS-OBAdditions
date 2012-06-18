@@ -12,6 +12,7 @@
 - (BOOL)containsString:(NSString *)string
                options:(NSStringCompareOptions)options;
 - (BOOL)isValidEmail;
+- (BOOL)isNumeric;
 
 - (NSString *)capitalizeFirstLetter;
 
