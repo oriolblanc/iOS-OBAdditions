@@ -7,6 +7,8 @@
 
 #import "TTTAttributedLabel+OBAdditions.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation TTTAttributedLabel (OBAdditions)
 
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize
