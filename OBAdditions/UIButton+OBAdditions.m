@@ -26,7 +26,7 @@ static char UIButtonBlockKey;
 
 - (id)initWithFrame:(CGRect)frame tapCallback:(UIButtonCallback)_callback
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [self initWithFrame:frame]))
     {
         objc_setAssociatedObject(self, &UIButtonBlockKey, _callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
         [self addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
