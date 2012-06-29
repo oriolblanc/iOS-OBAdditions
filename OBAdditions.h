@@ -24,9 +24,6 @@
 #import "UIImageView+OBAdditions.h"
 #import "UISearchBar+OBAdditions.h"
 
-#import "TTTAttributedLabel+OBAdditions.h"
-#import "MKMapView+OBAdditions.h"
-
 // Log methods
 #define LogMethod()         NSLog(@"%@", NSStringFromSelector(_cmd));
 #define LogFrame(f)         NSLog(@"Frame: %@", NSStringFromCGRect(f));
