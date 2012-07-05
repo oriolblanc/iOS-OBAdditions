@@ -9,13 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface NSInvocation (encapsulate)
+
 + (NSInvocation *)invocationForSelector:(SEL)selector target:(id)object;
 
 + (NSInvocation *)invocationWithInvocation:(NSInvocation *)firstInvocation
                              andInvocation:(NSInvocation *)secondInvocation
                                 parameters:(id)parameters 
                        customEncapsulation:(NSInvocation *)customInvokeEncapsulation;
-
-+ (NSString *)ciao;
 
 @end

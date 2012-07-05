@@ -26,9 +26,4 @@
     return nil;
 }
 
-+ (NSString *)ciao
-{
-    return @"akdsuga";
-}
-
 @end
