@@ -22,6 +22,7 @@
 #import "UIView+OBAdditions.h"
 #import "UIImage+OBAdditions.h"
 #import "UIImageView+OBAdditions.h"
+#import "UISearchBar+OBAdditions.h"
 
 // Log methods
 #define LogMethod()         NSLog(@"%@", NSStringFromSelector(_cmd));
