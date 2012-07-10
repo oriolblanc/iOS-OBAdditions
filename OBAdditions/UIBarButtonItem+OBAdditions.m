@@ -17,7 +17,7 @@ static char UIBarButtonItemBlockKey;
               style:(UIBarButtonItemStyle)style 
         tapCallback:(UIBarButtonItemCallback)callback
 {
-    if ((self = [super initWithTitle:title style:style target:self action:@selector(buttonTapped)]))
+    if ((self = [self initWithTitle:title style:style target:self action:@selector(buttonTapped)]))
     {
         objc_setAssociatedObject(self, &UIBarButtonItemBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
     }
@@ -27,7 +27,7 @@ static char UIBarButtonItemBlockKey;
 
 - (id)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem tapCallback:(UIBarButtonItemCallback)callback
 {
-    if ((self = [super initWithBarButtonSystemItem:systemItem target:self action:@selector(buttonTapped)]))
+    if ((self = [self initWithBarButtonSystemItem:systemItem target:self action:@selector(buttonTapped)]))
     {
         objc_setAssociatedObject(self, &UIBarButtonItemBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
     }
@@ -37,7 +37,7 @@ static char UIBarButtonItemBlockKey;
 
 - (id)initWithImage:(UIImage *)image tapCallback:(UIBarButtonItemCallback)callback
 {
-    if ((self = [super initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(buttonTapped)]))
+    if ((self = [self initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(buttonTapped)]))
     {
         objc_setAssociatedObject(self, &UIBarButtonItemBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
     }
@@ -52,7 +52,7 @@ static char UIBarButtonItemBlockKey;
     [button setImage:image forState:UIControlStateNormal];
     button.frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
     
-    if ((self = [super initWithCustomView:button]))
+    if ((self = [self initWithCustomView:button]))
     {
         objc_setAssociatedObject(self, &UIBarButtonItemBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
     }
