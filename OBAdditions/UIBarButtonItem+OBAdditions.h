@@ -8,6 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class UIBarButtonItem;
+typedef void (^UIBarButtonItemCallback)(UIBarButtonItem *button);
+
 @interface UIBarButtonItem (OBAdditions)
+
+- (id)initWithTitle:(NSString *)title 
+              style:(UIBarButtonItemStyle)style 
+        tapCallback:(UIBarButtonItemCallback)callback;
+
+- (id)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem 
+                      tapCallback:(UIBarButtonItemCallback)callback;
+
+- (id)initWithImage:(UIImage *)image
+        tapCallback:(UIBarButtonItemCallback)callback;
+
+- (id)initWithCustomImage:(UIImage *)image 
+              tapCallback:(UIBarButtonItemCallback)callback;
 
 @end
