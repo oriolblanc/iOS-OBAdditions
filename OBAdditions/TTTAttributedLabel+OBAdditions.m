@@ -11,6 +11,8 @@
 
 @implementation TTTAttributedLabel (OBAdditions)
 
+#pragma mark - Setting bold
+
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize
 {
     [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
@@ -70,30 +72,40 @@
     [self setText:text boldRanges:[NSArray arrayWithObject:[NSValue valueWithRange:range]]];
 }
 
-- (void)setText:(NSString *)text colorRange:(NSRange)range color:(UIColor *)color
+#pragma mark - Changing color
+
+- (void)setText:(NSString *)text colorRanges:(NSArray *)ranges color:(UIColor *)color
 {
     [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         
+        CTFontRef font = CTFontCreateWithName((CFStringRef)self.font.fontName, self.font.pointSize, NULL);
         CGColorRef rangeColor = color.CGColor;
         
-        if (range.location != NSNotFound)
+        for (NSValue *rangeValue in ranges)
         {
-            CTFontRef font = CTFontCreateWithName((CFStringRef)self.font.fontName, self.font.pointSize, NULL);
-            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(id)font range:range];
-            
-            if (![color isEqual:self.textColor])
+            NSRange range = [rangeValue rangeValue];
+            if (range.location != NSNotFound)
             {
-                [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)rangeColor range:range];
+                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(id)font range:range];
+                
+                if (![color isEqual:self.textColor])
+                {
+                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)rangeColor range:range];
+                }
             }
-            
-            CFRelease(font);
         }
+        CFRelease(font);
         
         return mutableAttributedString;
     }];
     
     self.layer.shouldRasterize = YES;
     self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+}
+
+- (void)setText:(NSString *)text colorRange:(NSRange)range color:(UIColor *)color
+{
+    [self setText:text colorRanges:[NSArray arrayWithObject:[NSValue valueWithRange:range]] color:color];   
 }
 
 @end
