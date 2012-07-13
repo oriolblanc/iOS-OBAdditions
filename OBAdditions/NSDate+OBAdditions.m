@@ -9,12 +9,29 @@
 
 @implementation NSDate (OBAdditions)
 
++ (NSDateFormatter *)dateFormatterWithUserLanguage
+{
+    static NSDateFormatter *dateFormatter;
+    
+    if (dateFormatter == nil)
+    {
+       dateFormatter = [[NSDateFormatter alloc] init];
+        
+        NSString *preferredLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
+        NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:preferredLanguage] autorelease];
+        
+        [dateFormatter setLocale:locale];
+    }
+    
+    return dateFormatter;
+}
+
 - (NSString *)formattedDateString
 {
     static NSDateFormatter *dateFormatter = nil;
     if (!dateFormatter)
     {
-        dateFormatter = [[NSDateFormatter alloc] init];    
+        dateFormatter = [NSDate dateFormatterWithUserLanguage];
         dateFormatter.dateStyle = NSDateFormatterShortStyle;
         dateFormatter.timeStyle = NSDateFormatterNoStyle;
     }
@@ -27,7 +44,7 @@
     static NSDateFormatter *dateFormatter = nil;
     if (!dateFormatter)
     {
-        dateFormatter = [[NSDateFormatter alloc] init];   
+        dateFormatter = [NSDate dateFormatterWithUserLanguage];
         dateFormatter.dateStyle = NSDateFormatterShortStyle;
         dateFormatter.timeStyle = NSDateFormatterShortStyle;
         
@@ -38,7 +55,7 @@
 
 - (id)initWithDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year
 {
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [NSDate dateFormatterWithUserLanguage];
     [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     
     NSString *dateToTransform = [NSString stringWithFormat:@"%i/%i/%i", 
@@ -54,7 +71,7 @@
 
 - (NSString *)getDayOfTheWeek
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [NSDate dateFormatterWithUserLanguage];
     [dateFormatter setDateFormat:@"EEEE"];
     
     NSString *res = [dateFormatter stringFromDate:self];
@@ -85,9 +102,9 @@
     
     if (!dateFormatter)
     {
-        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter = [NSDate dateFormatterWithUserLanguage];
     }
-        
+
     dateFormatter.dateFormat = formattedDate;
         
     NSString *formattedDateString = [dateFormatter stringFromDate:self];
