@@ -7,6 +7,8 @@
 
 @interface NSDate (OBAdditions)
 
++ (NSDateFormatter *)dateFormatterWithUserLanguage;
+
 - (NSString *)formattedDateString;
 - (NSString *)formattedDateAndTimeString;
 - (id)initWithDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year;
