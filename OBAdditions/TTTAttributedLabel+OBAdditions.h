@@ -18,4 +18,5 @@
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges;
 - (void)setText:(NSString *)text boldRange:(NSRange)range;
 
+- (void)setText:(NSString *)text colorRange:(NSRange)range color:(UIColor *)color;
 @end

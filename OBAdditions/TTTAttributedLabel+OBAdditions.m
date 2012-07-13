@@ -70,4 +70,30 @@
     [self setText:text boldRanges:[NSArray arrayWithObject:[NSValue valueWithRange:range]]];
 }
 
+- (void)setText:(NSString *)text colorRange:(NSRange)range color:(UIColor *)color
+{
+    [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        
+        CGColorRef rangeColor = color.CGColor;
+        
+        if (range.location != NSNotFound)
+        {
+            CTFontRef font = CTFontCreateWithName((CFStringRef)self.font.fontName, self.font.pointSize, NULL);
+            [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(id)font range:range];
+            
+            if (![color isEqual:self.textColor])
+            {
+                [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)rangeColor range:range];
+            }
+            
+            CFRelease(font);
+        }
+        
+        return mutableAttributedString;
+    }];
+    
+    self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+}
+
 @end
