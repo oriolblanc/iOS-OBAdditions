@@ -12,4 +12,7 @@
 - (id)performSelectorIfResponds:(SEL)aSelector;
 - (id)performSelectorIfResponds:(SEL)aSelector withObject:(id)anObject;
 
+- (void)performBlock:(void (^)(void))block ifRespondsTo:(SEL)aSelector;
+- (void)performBlock:(void (^)(id object))block withObject:(id)object ifRespondsTo:(SEL)aSelector;
+
 @end

@@ -11,7 +11,8 @@
 
 - (id)performSelectorIfResponds:(SEL)aSelector
 {
-    if ( [self respondsToSelector:aSelector] ) {
+    if ( [self respondsToSelector:aSelector] ) 
+    {
         return [self performSelector:aSelector];
     }
     return NULL;
@@ -19,11 +20,27 @@
 
 - (id)performSelectorIfResponds:(SEL)aSelector withObject:(id)anObject
 {
-    if ( [self respondsToSelector:aSelector] ) {
+    if ( [self respondsToSelector:aSelector] ) 
+    {
         return [self performSelector:aSelector withObject:anObject];
     }
     return NULL;
 }
 
+- (void)performBlock:(void (^)(void))block ifRespondsTo:(SEL) aSelector
+{
+    if ([self respondsToSelector:aSelector]) 
+    {
+        block();
+    }
+}
+
+- (void)performBlock:(void (^)(id object))block withObject:(id)object ifRespondsTo:(SEL) aSelector
+{
+    if ([self respondsToSelector:aSelector]) 
+    {
+        block(object);
+    }
+}
 
 @end
