@@ -15,7 +15,7 @@
     
     if (dateFormatter == nil)
     {
-       dateFormatter = [[NSDateFormatter alloc] init];
+       dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         
         NSString *preferredLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
         NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:preferredLanguage] autorelease];
@@ -75,7 +75,6 @@
     [dateFormatter setDateFormat:@"EEEE"];
     
     NSString *res = [dateFormatter stringFromDate:self];
-    [dateFormatter release];
     return res;
 }
 
