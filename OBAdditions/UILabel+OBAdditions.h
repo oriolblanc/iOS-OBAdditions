@@ -5,6 +5,14 @@
 //  Copyright (c) 2011 Oriol Blanc. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
+typedef enum {
+    UITextVerticalAlignmentTop,
+    UITextVerticalAlignmentMiddle,
+    UITextVerticalAlignmentBottom
+} UITextVerticalAlignment;
+
 @interface UILabel (OBAdditions)
 
 - (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)hor 
@@ -13,4 +21,5 @@
 - (CGSize)suggestedSizeConstrainedVertically:(CGFloat)max;
 - (CGSize)suggestedSize;
 
+- (void)setVerticalTextAligment:(UITextVerticalAlignment)verticalAlignment;
 @end
