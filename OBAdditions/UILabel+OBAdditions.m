@@ -34,22 +34,29 @@
 
 - (void)setVerticalTextAligment:(UITextVerticalAlignment)verticalAlignment
 {
-    CGRect textRect = [self textRectForBounds:self.bounds limitedToNumberOfLines:self.numberOfLines];
+    CGSize suggestedSize = [self suggestedSizeConstrainedHorizontally:self.frame.size.width];
+    CGRect textRect = self.frame;
     
     switch (verticalAlignment) {
         case UITextVerticalAlignmentTop:
-            textRect.origin.y = self.bounds.origin.y;
+        {
+            textRect.size.height = suggestedSize.height;
             break;
+        }
         case UITextVerticalAlignmentBottom:
-            textRect.origin.y = self.bounds.origin.y + self.bounds.size.height - textRect.size.height;
+        {
+            textRect.origin.y = self.frame.size.height - suggestedSize.height;
+            textRect.size.height = suggestedSize.height;
             break;
+        }
         case UITextVerticalAlignmentMiddle:
-            // Fall through.
         default:
-            textRect.origin.y = self.bounds.origin.y + (self.bounds.size.height - textRect.size.height) / 2.0;
+        {
+
+        }
     }
     
-    [self drawTextInRect:textRect];
+    self.frame = textRect;
 }
 
 @end
