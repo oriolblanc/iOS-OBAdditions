@@ -11,24 +11,19 @@
 
 + (NSDateFormatter *)dateFormatterWithUserLanguage
 {
-    static NSDateFormatter *dateFormatter;
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     
-    if (dateFormatter == nil)
-    {
-       dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-        
-        NSString *preferredLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
-        NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:preferredLanguage] autorelease];
-        
-        [dateFormatter setLocale:locale];
-    }
+    NSString *preferredLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:preferredLanguage] autorelease];
+    
+    [dateFormatter setLocale:locale];
     
     return dateFormatter;
 }
 
 - (NSString *)formattedDateString
 {
-    static NSDateFormatter *dateFormatter = nil;
+    NSDateFormatter *dateFormatter = nil;
     if (!dateFormatter)
     {
         dateFormatter = [NSDate dateFormatterWithUserLanguage];
@@ -41,7 +36,7 @@
 
 - (NSString *)formattedDateAndTimeString
 {
-    static NSDateFormatter *dateFormatter = nil;
+    NSDateFormatter *dateFormatter = nil;
     if (!dateFormatter)
     {
         dateFormatter = [NSDate dateFormatterWithUserLanguage];
@@ -97,7 +92,7 @@
 
 - (NSString *)stringByFormattedDate:(NSString *)formattedDate
 {
-    static NSDateFormatter *dateFormatter = nil;
+     NSDateFormatter *dateFormatter = nil;
     
     if (!dateFormatter)
     {
