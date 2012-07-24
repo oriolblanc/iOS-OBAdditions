@@ -17,4 +17,13 @@
     }
 }
 
+- (void)animateFade:(UIViewFadeType)fadeInOrOut
+       withDuration:(NSTimeInterval)duration
+{
+    self.alpha = fadeInOrOut == UIViewFadeTypeIn ? 0.0 : 1.0;
+    [UIView animateWithDuration:duration animations:^{
+        self.alpha = fadeInOrOut == UIViewFadeTypeIn ? 1.0 : 0.0;
+    }];
+}
+
 @end
