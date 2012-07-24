@@ -17,4 +17,15 @@
     [self loadRequest:request];
 }
 
+- (void)setBounces:(BOOL)bounces
+{
+    for (id subview in self.subviews)
+    {
+        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+        {
+            ((UIScrollView *)subview).bounces = bounces;
+        }
+    }
+}
+
 @end

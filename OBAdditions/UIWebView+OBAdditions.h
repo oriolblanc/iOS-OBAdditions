@@ -10,5 +10,6 @@
 @interface UIWebView (OBAdditions)
 
 - (void)loadDocument:(NSString*)documentName;
+- (void)setBounces:(BOOL)bounces;
 
 @end
