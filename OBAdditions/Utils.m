@@ -92,7 +92,7 @@ static int deviceOrientation = UIDeviceOrientationPortrait;
 + (NSString *)replacePointsByCommas:(NSString *)amount{
     
     NSNumberFormatter *inputFormatter = [[[NSNumberFormatter alloc] init] autorelease];
-    NSMutableString *input = [NSMutableString stringWithFormat:amount];
+    NSMutableString *input = [NSMutableString stringWithFormat:@"%@",amount];
     [input replaceOccurrencesOfString:@"." withString:@"," options:0 range:NSMakeRange(0, [amount length])];
     [inputFormatter setDecimalSeparator:@","];
     [inputFormatter setMaximumFractionDigits:2];
