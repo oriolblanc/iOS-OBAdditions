@@ -17,4 +17,9 @@ typedef enum
 
 - (void)animateFade:(UIViewFadeType)fadeInOrOut
        withDuration:(NSTimeInterval)duration;
+
+- (void)animateFadeInWithDuration:(NSTimeInterval)duration;
+
+- (void)animateFadeOutWithDuration:(NSTimeInterval)duration;
+
 @end

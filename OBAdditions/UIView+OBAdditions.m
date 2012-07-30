@@ -17,6 +17,8 @@
     }
 }
 
+#pragma mark - Animate Fade In / Fade Out
+
 - (void)animateFade:(UIViewFadeType)fadeInOrOut
        withDuration:(NSTimeInterval)duration
 {
@@ -24,6 +26,16 @@
     [UIView animateWithDuration:duration animations:^{
         self.alpha = fadeInOrOut == UIViewFadeTypeIn ? 1.0 : 0.0;
     }];
+}
+
+- (void)animateFadeInWithDuration:(NSTimeInterval)duration
+{
+    [self animateFade:UIViewFadeTypeIn withDuration:duration];
+}
+
+- (void)animateFadeOutWithDuration:(NSTimeInterval)duration
+{
+    [self animateFade:UIViewFadeTypeOut withDuration:duration];
 }
 
 @end
