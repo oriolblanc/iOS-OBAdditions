@@ -31,7 +31,10 @@ static char UIAlertViewBlockKey;
         }
         va_end(args);
         
-		objc_setAssociatedObject(self, &UIAlertViewBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        if (callback != NULL)
+        {
+            objc_setAssociatedObject(self, &UIAlertViewBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        }
     }
     
     return self;
