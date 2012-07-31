@@ -13,6 +13,7 @@
 #import "NSNumber+OBAdditions.h"
 #import "NSString+OBAdditions.h"
 
+#import "UIAlertView+OBAdditions.h"
 #import "UIButton+OBAdditions.h"
 #import "UIColor+OBAdditions.h"
 #import "UILabel+OBAdditions.h"
