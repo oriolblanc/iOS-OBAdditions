@@ -7,7 +7,6 @@
 
 #import "UIButton+OBAdditions.h"
 #import <objc/runtime.h>
-#import <QuartzCore/QuartzCore.h>
 
 #define kLabelTitleTag 1516
 #define kLabelSubtitleTag 2342

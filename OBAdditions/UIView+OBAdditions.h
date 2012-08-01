@@ -15,11 +15,17 @@ typedef enum
 
 - (void)removeAllSubviews;
 
+#pragma mark - Fade In / Out animations
+
 - (void)animateFade:(UIViewFadeType)fadeInOrOut
        withDuration:(NSTimeInterval)duration;
 
 - (void)animateFadeInWithDuration:(NSTimeInterval)duration;
 
 - (void)animateFadeOutWithDuration:(NSTimeInterval)duration;
+
+#pragma mark - Shine animations
+
+- (void)animateShineWithDuration:(NSTimeInterval)duration repeatCount:(NSUInteger)repeatCount;
 
 @end
