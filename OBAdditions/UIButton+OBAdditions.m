@@ -94,28 +94,36 @@ static char UIButtonBlockKey;
 
 #pragma mark - Animations
 
-- (void)animateShine
+- (void)animateShineWithDuration:(NSTimeInterval)duration repeatCount:(NSUInteger)repeatCount
 {
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [whiteView setBackgroundColor:[UIColor whiteColor]];
+    [whiteView setUserInteractionEnabled:NO];
+    [self addSubview:whiteView];
+    
     CALayer *maskLayer = [CALayer layer];
     
     // Mask image ends with 0.15 opacity on both sides. Set the background color of the layer
     // to the same value so the layer can extend the mask image.
-    maskLayer.backgroundColor = [[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.15f] CGColor];
-    maskLayer.contents = (id)[[UIImage imageNamed:@"Mask.png"] CGImage];
+    maskLayer.backgroundColor = [[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.0f] CGColor];
+    maskLayer.contents = (id)[[UIImage imageNamed:@"ShineMask.png"] CGImage];
     
     // Center the mask image on twice the width of the text layer, so it starts to the left
     // of the text layer and moves to its right when we translate it by width.
     maskLayer.contentsGravity = kCAGravityCenter;
-    maskLayer.frame = CGRectMake(self.frame.size.width * -1, 0.0f, self.frame.size.width * 2, self.frame.size.height);
+    maskLayer.frame = CGRectMake(-whiteView.frame.size.width,
+                                 0.0f,
+                                 whiteView.frame.size.width * 2,
+                                 whiteView.frame.size.height);
     
     // Animate the mask layer's horizontal position
     CABasicAnimation *maskAnim = [CABasicAnimation animationWithKeyPath:@"position.x"];
-    maskAnim.byValue = [NSNumber numberWithFloat:self.frame.size.width];
-    maskAnim.repeatCount = 1;
-    maskAnim.duration = 1.0f;
-    [maskLayer addAnimation:maskAnim forKey:@"slideAnim"];
+    maskAnim.byValue = [NSNumber numberWithFloat:self.frame.size.width * 9];
+    maskAnim.repeatCount = HUGE_VALF;
+    maskAnim.duration = 3.0f;
+    [maskLayer addAnimation:maskAnim forKey:@"shineAnim"];
     
-    self.layer.mask = maskLayer;
+    whiteView.layer.mask = maskLayer;
 }
 
 @end
