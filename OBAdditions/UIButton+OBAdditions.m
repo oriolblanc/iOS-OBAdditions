@@ -111,8 +111,8 @@ static char UIButtonBlockKey;
     // Animate the mask layer's horizontal position
     CABasicAnimation *maskAnim = [CABasicAnimation animationWithKeyPath:@"position.x"];
     maskAnim.byValue = [NSNumber numberWithFloat:self.frame.size.width];
-    maskAnim.repeatCount = 100;
-    maskAnim.duration = 2.0f;
+    maskAnim.repeatCount = 1;
+    maskAnim.duration = 1.0f;
     [maskLayer addAnimation:maskAnim forKey:@"slideAnim"];
     
     self.layer.mask = maskLayer;
