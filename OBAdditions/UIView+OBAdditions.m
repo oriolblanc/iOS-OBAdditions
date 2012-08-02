@@ -6,7 +6,11 @@
 //
 
 #import "UIView+OBAdditions.h"
+
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
+
+static char UIViewMaskAnimationKey;
 
 @implementation UIView (OBAdditions)
 
@@ -43,17 +47,19 @@
 
 - (void)animateShineWithDuration:(NSTimeInterval)duration repeatCount:(NSUInteger)repeatCount
 {
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    UIView *whiteView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)] autorelease];
     [whiteView setBackgroundColor:[UIColor whiteColor]];
     [whiteView setUserInteractionEnabled:NO];
     [self addSubview:whiteView];
+    
+    objc_setAssociatedObject(self, &UIViewMaskAnimationKey, whiteView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     CALayer *maskLayer = [CALayer layer];
     
     // Mask image ends with 0.15 opacity on both sides. Set the background color of the layer
     // to the same value so the layer can extend the mask image.
     maskLayer.backgroundColor = [[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.0f] CGColor];
-    maskLayer.contents = (id)[[UIImage imageNamed:@"ShineMask.png"] CGImage];
+    maskLayer.contents = (id)[[UIImage imageNamed:@"shineWhiteMask.png"] CGImage];
     
     // Center the mask image on twice the width of the text layer, so it starts to the left
     // of the text layer and moves to its right when we translate it by width.
@@ -65,12 +71,25 @@
     
     // Animate the mask layer's horizontal position
     CABasicAnimation *maskAnim = [CABasicAnimation animationWithKeyPath:@"position.x"];
-    maskAnim.byValue = [NSNumber numberWithFloat:self.frame.size.width * 9];
-    maskAnim.repeatCount = HUGE_VALF;
-    maskAnim.duration = 3.0f;
+    maskAnim.byValue = [NSNumber numberWithFloat:self.frame.size.width *9];
+    maskAnim.repeatCount = repeatCount;
+    maskAnim.duration = duration;
+    maskAnim.delegate = self;
+    maskAnim.removedOnCompletion = YES;
+    
     [maskLayer addAnimation:maskAnim forKey:@"shineAnim"];
     
     whiteView.layer.mask = maskLayer;
+}
+
+#pragma mark - Animations Callback
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+    
+    UIView *whiteMask = (UIView *)objc_getAssociatedObject(self, &UIViewMaskAnimationKey);
+    [whiteMask removeFromSuperview];
+//    [theAnimation remo]
 }
 
 @end
