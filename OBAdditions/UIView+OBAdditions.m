@@ -86,7 +86,6 @@ static char UIViewMaskAnimationKey;
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
-    
     UIView *whiteMask = (UIView *)objc_getAssociatedObject(self, &UIViewMaskAnimationKey);
     [whiteMask removeFromSuperview];
 //    [theAnimation remo]
