@@ -42,7 +42,7 @@ static char UIButtonBlockKey;
     {
         callback(self);
     }
-}
+} 
 
 - (void)setTitle:(NSString *)title andSubtitle:(NSString *)subtitle forState:(UIControlState)state
 {
