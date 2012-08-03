@@ -1,5 +1,6 @@
 //
 //  NSInvocation+encapsulate.h
+//  Gossip
 //
 //  Created by Oriol Blanc Gimeno on 07/05/12.
 //  Copyright (c) 2012 Oriol Blanc. All rights reserved.
