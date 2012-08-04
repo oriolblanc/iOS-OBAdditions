@@ -22,8 +22,4 @@ typedef void (^UIButtonCallback)(UIButton *button);
 - (UILabel *)additionalTitleLabel;
 - (UILabel *)additionalSubtitleLabel;
 
-#pragma mark - Animations
-
-- (void)animateShine;
-
 @end
