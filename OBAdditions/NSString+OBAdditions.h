@@ -21,6 +21,9 @@
 - (NSString *)replaceCommasByPoints;
 - (NSString *)replacePointsByCommas;
 - (NSString *)deleteSpace;
+- (NSString *)trim;
+
+// crpypt
 - (NSString *)stringToSha1;
 - (NSString *)stringToBase64;
 

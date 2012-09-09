@@ -104,6 +104,11 @@
     return [self stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
 }
 
+- (NSString *)trim
+{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 // Source http://stackoverflow.com/questions/1353771/trying-to-write-nsstring-sha1-function-but-its-returning-null
 - (NSString *)stringToSha1{
     const char *cStr = [self UTF8String];
