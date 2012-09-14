@@ -2,7 +2,7 @@
 //  NSObject+OBAdditions.h
 //
 //  Created by Oriol Blanc Gimeno on 13/07/12.
-//  Copyright (c) 2012 Fever, Inc. All rights reserved.
+//  Copyright (c) 2012 Oriol Blanc, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
