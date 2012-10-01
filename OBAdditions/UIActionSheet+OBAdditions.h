@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class UIButton;
+@class UIActionSheet;
 typedef void (^UIActionSheetDismissedCallback)(UIActionSheet *actionSheet, NSUInteger buttonIndex);
 
 @interface UIActionSheet (OBAdditions)
