@@ -23,8 +23,28 @@
 
 + (UIImage *)additionalImageNamed:(NSString *)imageName
 {
-    UIImage *image = [self additionalImageNamed:imageName];
-    if (!image) 
+    NSArray *splitedImageName = [imageName componentsSeparatedByString:@"."];
+    if (splitedImageName.count != 2)
+    {
+        // ilegal
+        return nil;
+    }
+    
+    UIImage* image = nil;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    if ([UIScreen mainScreen].scale == 2.f && screenHeight == 568.0f)
+    {
+        image = [self additionalImageNamed:[NSString stringWithFormat:@"%@-568h@2x.%@",
+                                              [splitedImageName objectAtIndex:0],
+                                              [splitedImageName objectAtIndex:1]]];
+    }
+    
+    if (image == nil)
+    {
+        image = [self additionalImageNamed:imageName];
+    }
+    
+    if (image == nil)
     {
         NSLog(@"error al cargar la imagen '%@'", imageName);
         [OBTheme ilegalStepWarningWithString:[NSString stringWithFormat:@"[IMAGE_NOTFOUND] %@", imageName]];
