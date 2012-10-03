@@ -8,6 +8,10 @@
 #import "UIImage+OBAdditions.h"
 #import <objc/runtime.h> 
 
+#ifndef ilegalStepWarningWithFormat
+    #define ilegalStepWarningWithFormat(__FORMAT__, ...)
+#endif
+
 @implementation UIImage (OBAdditions)
 
 + (void)load {
@@ -26,7 +30,7 @@
     NSArray *splitedImageName = [imageName componentsSeparatedByString:@"."];
     if (splitedImageName.count != 2)
     {
-        // ilegal
+        ilegalStepWarningWithFormat(@"Ilegal image name");
         return nil;
     }
     
@@ -47,7 +51,8 @@
     if (image == nil)
     {
         NSLog(@"error al cargar la imagen '%@'", imageName);
-        [OBTheme ilegalStepWarningWithString:[NSString stringWithFormat:@"[IMAGE_NOTFOUND] %@", imageName]];
+//        ilegalStepWarningWithString([NSString stringWithFormat:@"[IMAGE_NOTFOUND] %@", imageName]);
+        ilegalStepWarningWithFormat(@"[IMAGE_NOTFOUND] %@", imageName);
     }
 	return image;
 }

@@ -7,6 +7,10 @@
 
 #import "OBTheme.h"
 
+#ifndef ilegalStepWarningWithFormat
+    #define ilegalStepWarningWithFormat(__FORMAT__, ...)
+#endif
+
 @implementation OBTheme
 
 + (UIColor *)colorForKey:(NSString *)key
@@ -33,7 +37,7 @@
     if ([string isEqualToString:key])
     {
         NSLog(@"Error at get translation for key = %@", key); 
-        [self ilegalStepWarningWithString:[NSString stringWithFormat:@"[TRANSLATION_NOTFOUND] key %@", key]];
+        ilegalStepWarningWithFormat(@"[TRANSLATION_NOTFOUND] key %@", key);
     }
     
     return string;
@@ -42,7 +46,7 @@
 // you can override this method
 + (void)ilegalStepWarningWithString:(NSString *)string
 {
-
+    NSLog(@"me lol con el bug \n%@", string);
 }
 
 @end
