@@ -15,14 +15,23 @@ static char UIButtonBlockKey;
 
 @implementation UIButton (OBAdditions)
 
-+ (id)buttonWithType:(UIButtonType)buttonType tapCallback:(UIButtonCallback)_callback
++ (id)buttonWithType:(UIButtonType)buttonType
+    forControlEvents:(UIControlEvents)controlEvents
+         tapCallback:(UIButtonCallback)_callback
 {
     UIButton *button = [self buttonWithType:buttonType];
     objc_setAssociatedObject(button, &UIButtonBlockKey, _callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [button addTarget:button action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:button action:@selector(buttonTapped) forControlEvents:controlEvents];
     
     return button;
 }
+
++ (id)buttonWithType:(UIButtonType)buttonType tapCallback:(UIButtonCallback)callback
+{
+    return [self buttonWithType:buttonType forControlEvents:UIControlEventTouchUpInside tapCallback:callback];
+}
+
+
 
 - (id)initWithFrame:(CGRect)frame tapCallback:(UIButtonCallback)_callback
 {

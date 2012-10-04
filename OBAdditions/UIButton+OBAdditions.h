@@ -13,7 +13,12 @@ typedef void (^UIButtonCallback)(UIButton *button);
 @interface UIButton (OBAdditions)
 
 + (id)buttonWithType:(UIButtonType)buttonType
+    forControlEvents:(UIControlEvents)controlEvents
          tapCallback:(UIButtonCallback)_callback;
+
++ (id)buttonWithType:(UIButtonType)buttonType
+         tapCallback:(UIButtonCallback)_callback;
+
 - (id)initWithFrame:(CGRect)frame
         tapCallback:(UIButtonCallback)_callback;
 
