@@ -28,7 +28,12 @@
 + (UIImage *)additionalImageNamed:(NSString *)imageName
 {
     NSArray *splitedImageName = [imageName componentsSeparatedByString:@"."];
-    if (splitedImageName.count != 2)
+    
+    NSString *extension = [splitedImageName objectAtIndex:splitedImageName.count - 1];
+    
+    NSString *fileName = [imageName stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@".%@",extension] withString:@""];
+    
+    if (splitedImageName.count < 2)
     {
         ilegalStepWarningWithFormat(@"Ilegal image name");
         return nil;
@@ -38,9 +43,7 @@
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
     if ([UIScreen mainScreen].scale == 2.f && screenHeight == 568.0f)
     {
-        image = [self additionalImageNamed:[NSString stringWithFormat:@"%@-568h@2x.%@",
-                                              [splitedImageName objectAtIndex:0],
-                                              [splitedImageName objectAtIndex:1]]];
+        image = [self additionalImageNamed:[NSString stringWithFormat:@"%@-568h@2x.%@",fileName, extension]];
     }
     
     if (image == nil)
