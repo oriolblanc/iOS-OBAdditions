@@ -34,5 +34,9 @@
 #define LogSize(s)          NSLog(@"Size: %@", NSStringFromCGSize(s));
 #define LogMainThread()     NSLog(@"Main thread: %d", [[NSThread currentThread] isMainThread]);
 
+
+/* Blocks useful stuff */
+#define createBlockSafeSelf() __block typeof(self) blockSafeSelf = self;
+
 // Warnings
-//#define ilegalStepWarningWithFormat(__FORMAT__, ...) [OBTheme ilegalStepWarningWithString:[NSString stringWithFormat:__FORMAT__,##__VA_ARGS__]];
+#define ilegalStepWarningWithFormat(__FORMAT__, ...) [OBTheme ilegalStepWarningWithString:[NSString stringWithFormat:__FORMAT__,##__VA_ARGS__]];
