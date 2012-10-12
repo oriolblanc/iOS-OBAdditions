@@ -43,4 +43,9 @@
     }
 }
 
+- (id)objectForKey:(id)aKey
+{
+    return nil;
+}
+
 @end
