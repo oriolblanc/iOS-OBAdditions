@@ -7,8 +7,11 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+typedef void (^OBLocationManagerUpdateCallback)(CLLocation *newLocation, CLLocation *oldLocation);
+typedef void (^OBLocationManagerErrorCallback)(NSError *error);
+
 @interface CLLocationManager (OBAdditions)
 
-- (void)updateLocationWithBlock:(void (^)(CLLocation *newLocation, CLLocation *oldLocation))updateBlock errorBlock:(void (^)(NSError *error))errorBlock;
++ (CLLocationManager *)locationManagerWithUpdateBlock:(OBLocationManagerUpdateCallback)updateBlock errorBlock:(OBLocationManagerErrorCallback)errorBlock;
 
 @end

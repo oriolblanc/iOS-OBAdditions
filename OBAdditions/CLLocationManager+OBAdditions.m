@@ -9,9 +9,58 @@
 
 @implementation CLLocationManager (OBAdditions)
 
-- (void)updateLocationWithBlock:(void (^)(CLLocation *newLocation, CLLocation *oldLocation))updateBlock errorBlock:(void (^)(NSError *error))errorBlock
++ (CLLocationManager *)locationManagerWithUpdateBlock:(OBLocationManagerUpdateCallback)updateBlock errorBlock:(OBLocationManagerErrorCallback)errorBlock
 {
 
+}
+
+@end
+
+@interface OBLocationManager : NSObject <CLLocationManagerDelegate>
+
+@property (nonatomic, copy) OBLocationManagerUpdateCallback updateBlock;
+@property (nonatomic, copy) OBLocationManagerErrorCallback errorBlock;
+
+- (id)initWithUpdateBlock:(OBLocationManagerUpdateCallback)updateBlock errorBlock:(OBLocationManagerErrorCallback)errorBlock;
+
+@end
+
+@implementation OBLocationManager
+@synthesize updateBlock = _updateBlock;
+@synthesize errorBlock = _errorBlock;
+
+- (id)initWithUpdateBlock:(OBLocationManagerUpdateCallback)updateBlock errorBlock:(OBLocationManagerErrorCallback)errorBlock
+{
+	self = [super init];
+	if (self) {
+		self.updateBlock = updateBlock;
+		self.errorBlock = errorBlock;
+	}
+    
+	return self;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+	if (self.updateBlock != NULL)
+    {
+		self.updateBlock(newLocation, oldLocation);
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+	if (self.errorBlock != NULL)
+    {
+		self.errorBlock(error);
+	}
+}
+
+- (void)dealloc
+{
+    if (_) {
+        <#statements#>
+    }
 }
 
 @end
