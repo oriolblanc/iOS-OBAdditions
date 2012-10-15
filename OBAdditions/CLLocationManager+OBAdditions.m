@@ -58,9 +58,17 @@
 
 - (void)dealloc
 {
-    if (_) {
-        <#statements#>
+    if (_updateBlock != NULL)
+    {
+        [_updateBlock release];
     }
+    
+    if (_errorBlock != NULL)
+    {
+        [_errorBlock release];
+    }
+    
+    [super dealloc];
 }
 
 @end
