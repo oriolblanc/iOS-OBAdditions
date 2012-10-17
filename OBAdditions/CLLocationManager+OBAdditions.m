@@ -6,15 +6,7 @@
 //
 
 #import "CLLocationManager+OBAdditions.h"
-
-@implementation CLLocationManager (OBAdditions)
-
-+ (CLLocationManager *)locationManagerWithUpdateBlock:(OBLocationManagerUpdateCallback)updateBlock errorBlock:(OBLocationManagerErrorCallback)errorBlock
-{
-
-}
-
-@end
+#import <objc/runtime.h>
 
 @interface OBLocationManager : NSObject <CLLocationManagerDelegate>
 
@@ -69,6 +61,21 @@
     }
     
     [super dealloc];
+}
+
+@end
+
+@implementation CLLocationManager (OBAdditions)
+
++ (CLLocationManager *)locationManagerWithUpdateBlock:(OBLocationManagerUpdateCallback)updateBlock errorBlock:(OBLocationManagerErrorCallback)errorBlock
+{
+    CLLocationManager *locationManager = [[[self alloc] init] autorelease];
+    
+    OBLocationManager *manager = [[[OBLocationManager alloc] initWithUpdateBlock:updateBlock errorBlock:errorBlock] autorelease];
+    
+    objc_setAssociatedObject(locationManager, @"CLLocationManagerBlocks", manager, OBJC_ASSOCIATION_RETAIN);
+    
+	return locationManager;
 }
 
 @end

@@ -31,8 +31,6 @@ static char UIButtonBlockKey;
     return [self buttonWithType:buttonType forControlEvents:UIControlEventTouchUpInside tapCallback:callback];
 }
 
-
-
 - (id)initWithFrame:(CGRect)frame tapCallback:(UIButtonCallback)_callback
 {
     if ((self = [self initWithFrame:frame]))
