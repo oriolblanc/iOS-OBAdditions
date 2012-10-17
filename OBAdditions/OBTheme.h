@@ -5,6 +5,8 @@
 //  Copyright 2011 Oriol Blanc All rights reserved.
 //
 
+#define OBThemeIlegalStepWarning @"OBThemeIlegalStepWarning"
+
 static NSString * const kColorKeySubtitleShadowColor = @"kColorKeySubtitleShadowColor";
 
 @interface OBTheme : NSObject

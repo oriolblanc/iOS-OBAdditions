@@ -46,8 +46,9 @@
 // you can override this method
 + (void)ilegalStepWarningWithString:(NSString *)string
 {
-    NSLog(@"Incomplete method implementation.");
-    [self doesNotRecognizeSelector:_cmd];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:OBThemeIlegalStepWarning
+     object:string];
 }
 
 @end
