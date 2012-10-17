@@ -16,6 +16,4 @@ static NSString * const kColorKeySubtitleShadowColor = @"kColorKeySubtitleShadow
 
 + (void)ilegalStepWarningWithString:(NSString *)string;
 
-
-
 @end

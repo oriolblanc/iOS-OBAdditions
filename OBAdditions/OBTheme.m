@@ -46,7 +46,8 @@
 // you can override this method
 + (void)ilegalStepWarningWithString:(NSString *)string
 {
-    NSLog(@"me lol con el bug \n%@", string);
+    NSLog(@"Incomplete method implementation.");
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 @end
