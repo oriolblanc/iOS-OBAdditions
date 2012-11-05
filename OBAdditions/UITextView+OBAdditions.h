@@ -9,4 +9,10 @@
 
 @interface UITextView (OBAdditions)
 
+- (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)hor
+                                    vertically:(CGFloat)ver;
+- (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)max;
+- (CGSize)suggestedSizeConstrainedVertically:(CGFloat)max;
+- (CGSize)suggestedSize;
+
 @end

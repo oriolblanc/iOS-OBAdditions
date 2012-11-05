@@ -16,7 +16,6 @@
                      lineBreakMode:self.lineBreakMode];
 }
 
-
 - (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)max
 {
 	return [self suggestedSizeConstrainedHorizontally:max vertically:FLT_MAX];
