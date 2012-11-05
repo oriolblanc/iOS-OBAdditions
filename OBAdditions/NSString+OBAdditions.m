@@ -162,6 +162,19 @@
     return [[[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES] autorelease];
 }
 
+- (NSString *)stringByReversingString
+{
+    __block NSMutableString *reversedString = [NSMutableString stringWithCapacity:[self length]];
+    
+    [self enumerateSubstringsInRange:NSMakeRange(0,[self length])
+                                 options:(NSStringEnumerationReverse | NSStringEnumerationByComposedCharacterSequences)
+                              usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                                  [reversedString appendString:substring];
+                              }];
+    
+    return [NSString stringWithString:reversedString];
+}
+
 + (BOOL)isStringEmpty:(NSString *)aString
 {
     if ((NSNull *) aString == [NSNull null]) {
