@@ -45,6 +45,11 @@
     {
         image = [self additionalImageNamed:[NSString stringWithFormat:@"%@-568h@2x.%@",fileName, extension]];
     }
+    else
+    {
+        image = [self additionalImageNamed:[NSString stringWithFormat:@"%@-480h@2x.%@",fileName, extension]];
+    }
+
     
     if (image == nil)
     {
