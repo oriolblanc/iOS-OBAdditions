@@ -26,6 +26,7 @@
 #import "UIImage+OBAdditions.h"
 #import "UIImageView+OBAdditions.h"
 #import "UISearchBar+OBAdditions.h"
+#import "UITextView+OBAdditions.h"
 #import "UIWebView+OBAdditions.h"
 
 // Log methods
