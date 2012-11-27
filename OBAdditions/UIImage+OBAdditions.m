@@ -59,7 +59,6 @@
     if (image == nil)
     {
         NSLog(@"error al cargar la imagen '%@'", imageName);
-//        ilegalStepWarningWithString([NSString stringWithFormat:@"[IMAGE_NOTFOUND] %@", imageName]);
         ilegalStepWarningWithFormat(@"[IMAGE_NOTFOUND] %@", imageName);
     }
 	return image;
