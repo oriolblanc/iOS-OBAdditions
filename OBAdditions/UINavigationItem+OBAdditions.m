@@ -65,7 +65,7 @@
     [titleView setTag:kLabelTitle];
     titleView.backgroundColor = [UIColor clearColor];
     titleView.font = [UIFont boldSystemFontOfSize:15];
-    titleView.textAlignment = UITextAlignmentCenter;
+    titleView.textAlignment = NSTextAlignmentCenter;
     titleView.textColor = [UIColor whiteColor];
     titleView.shadowColor = [OBTheme colorForKey:kColorKeySubtitleShadowColor];
     titleView.shadowOffset = CGSizeMake(0, -1);
@@ -78,7 +78,7 @@
     [subtitleView setTag:kLabelSubtitle];
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:10];
-    subtitleView.textAlignment = UITextAlignmentCenter;
+    subtitleView.textAlignment = NSTextAlignmentCenter;
     subtitleView.textColor = [UIColor colorWithWholeRed:217 wholeGreen:198 wholeBlue:234 alpha:1];
     subtitleView.shadowColor = [OBTheme colorForKey:kColorKeySubtitleShadowColor];
     subtitleView.shadowOffset = CGSizeMake(0, -1);

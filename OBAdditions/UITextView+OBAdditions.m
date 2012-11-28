@@ -13,7 +13,7 @@
 {
 	return [self.text sizeWithFont:self.font
                  constrainedToSize:CGSizeMake(hor, ver)
-                     lineBreakMode:UILineBreakModeWordWrap];
+                     lineBreakMode:NSLineBreakByWordWrapping];
 }
 
 - (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)max
