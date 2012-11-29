@@ -7,6 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class UISwitch;
+typedef void (^UISwitchCallback)(UISwitch *switcher);
+
 @interface UISwitch (OBAdditions)
+
+- (void)setCallback:(UISwitchCallback)callback;
 
 @end
