@@ -12,6 +12,7 @@
 #import "NSDate+OBAdditions.h"
 #import "NSNumber+OBAdditions.h"
 #import "NSString+OBAdditions.h"
+#import "NSURL+OBAdditions.h"
 
 #import "UIActionSheet+OBAdditions.h"
 #import "UIAlertView+OBAdditions.h"

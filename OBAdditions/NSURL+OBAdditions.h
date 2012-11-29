@@ -9,4 +9,6 @@
 
 @interface NSURL (OBAdditions)
 
+- (NSURL *)URLByAppendingQueryString:(NSString *)queryString;
+
 @end
