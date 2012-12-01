@@ -13,4 +13,7 @@
 // Method to pass a string like @"AF04DB" representing a color in hexadecimal
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 
+// Generate a Random Color
++ (UIColor *)randomColor;
+
 @end
