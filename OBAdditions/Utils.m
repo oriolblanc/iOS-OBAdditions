@@ -63,7 +63,6 @@ static int deviceOrientation = UIDeviceOrientationPortrait;
 	[dateFormatter setDateStyle:format];
 	[dateFormatter setLocale:[NSLocale currentLocale]];
 	NSString *result = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
-	[dateFormatter release];
 	return result;
 }
 
@@ -73,7 +72,6 @@ static int deviceOrientation = UIDeviceOrientationPortrait;
 	[dateFormatter setTimeStyle:format];
 	[dateFormatter setLocale:[NSLocale currentLocale]];
 	NSString *result = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
-	[dateFormatter release];
 	return result;
 }
 
@@ -91,7 +89,7 @@ static int deviceOrientation = UIDeviceOrientationPortrait;
 
 + (NSString *)replacePointsByCommas:(NSString *)amount{
     
-    NSNumberFormatter *inputFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+    NSNumberFormatter *inputFormatter = [[NSNumberFormatter alloc] init];
     NSMutableString *input = [NSMutableString stringWithFormat:@"%@",amount];
     [input replaceOccurrencesOfString:@"." withString:@"," options:0 range:NSMakeRange(0, [amount length])];
     [inputFormatter setDecimalSeparator:@","];
@@ -124,17 +122,17 @@ static int deviceOrientation = UIDeviceOrientationPortrait;
     return [MFMailComposeViewController canSendMail];
 }
 
-+ (UIViewController *)openComposeMailViewController:(NSString *)recipient withSubject:(NSString *)subject withMailDismissDelegate:(id<MFMailComposeViewControllerDelegate> *)delegate
++ (UIViewController *)openComposeMailViewController:(NSString *)recipient withSubject:(NSString *)subject withMailDismissDelegate:(id<MFMailComposeViewControllerDelegate>)delegate
 {
     MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-    mailViewController.mailComposeDelegate = (id<MFMailComposeViewControllerDelegate>)delegate;
+    mailViewController.mailComposeDelegate = delegate;
     
     NSArray *recipients = [NSArray arrayWithObjects:recipient, nil];
     
     [mailViewController setToRecipients:recipients];
     [mailViewController setSubject:subject];
     
-    return [mailViewController autorelease];
+    return mailViewController;
 }
 
 @end

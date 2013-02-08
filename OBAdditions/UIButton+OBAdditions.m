@@ -69,8 +69,6 @@ static char UIButtonBlockKey;
         titleLabel.textAlignment = UITextAlignmentCenter;
         
         [self addSubview:titleLabel];
-        
-        [titleLabel release];
     }
     [titleLabel setText:title];
     
@@ -83,7 +81,6 @@ static char UIButtonBlockKey;
         subtitleLabel.textAlignment = UITextAlignmentCenter;
         
         [self addSubview:subtitleLabel];
-        [subtitleLabel release];
     }
     [subtitleLabel setText:subtitle];
 }

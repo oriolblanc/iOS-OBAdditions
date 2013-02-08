@@ -11,10 +11,10 @@
 
 + (NSDateFormatter *)dateFormatterWithUserLanguage
 {
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
     NSString *preferredLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
-    NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:preferredLanguage] autorelease];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:preferredLanguage];
     
     [dateFormatter setLocale:locale];
     
@@ -55,7 +55,7 @@
     
     NSString *dateToTransform = [NSString stringWithFormat:@"%i/%i/%i", 
                                  day, month, year];
-    return [[dateFormatter dateFromString:dateToTransform] retain];
+    return [dateFormatter dateFromString:dateToTransform];
 }
 
 - (NSUInteger)day
@@ -233,15 +233,13 @@
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *overshootComponents = [gregorian components:NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
     
-    [gregorian release];
-    
     NSTimeInterval overshotByHours = [overshootComponents hour] * 60 * 60;
     NSTimeInterval overshotByMinutes = [overshootComponents minute] * 60;
     NSTimeInterval overshotBySeconds = [overshootComponents second];
     NSTimeInterval interval = [self timeIntervalSinceReferenceDate];
     NSTimeInterval floorInterval = interval - (overshotByHours + overshotByMinutes + overshotBySeconds);
     
-    NSDate *floorDate = [[[NSDate alloc] initWithTimeIntervalSinceReferenceDate:floorInterval] autorelease];
+    NSDate *floorDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:floorInterval];
     
     return floorDate;
 }

@@ -29,7 +29,7 @@
 + (void)swizzleSelector:(SEL)orig ofClass:(Class)c withSelector:(SEL)newSelector;
 
 + (BOOL)canSendMail;
-+ (UIViewController *)openComposeMailViewController:(NSString *)recipient withSubject:(NSString *)subject withMailDismissDelegate:(id<MFMailComposeViewControllerDelegate> *)delegate;
++ (UIViewController *)openComposeMailViewController:(NSString *)recipient withSubject:(NSString *)subject withMailDismissDelegate:(id<MFMailComposeViewControllerDelegate>)delegate;
 
 @end
 

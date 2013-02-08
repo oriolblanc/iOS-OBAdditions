@@ -71,7 +71,6 @@ static char UIActionSheetBlockKey;
         }
         
         [actionSheet showInView:view];
-        [actionSheet release];
     }
 }
 

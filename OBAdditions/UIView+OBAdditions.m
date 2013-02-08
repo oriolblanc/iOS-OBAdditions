@@ -47,7 +47,7 @@ static char UIViewMaskAnimationKey;
 
 - (void)animateShineWithDuration:(NSTimeInterval)duration repeatCount:(NSUInteger)repeatCount
 {
-    UIView *whiteView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)] autorelease];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [whiteView setBackgroundColor:[UIColor whiteColor]];
     [whiteView setUserInteractionEnabled:NO];
     [self addSubview:whiteView];

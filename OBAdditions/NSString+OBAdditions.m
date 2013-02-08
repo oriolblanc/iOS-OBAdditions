@@ -36,7 +36,7 @@
 
 - (BOOL)isNumeric
 {
-    NSNumberFormatter* numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+    NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
     
     return [numberFormatter numberFromString:self] != nil;
 }
@@ -58,7 +58,6 @@
     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm:ss"];// HH:mm:ss
     
     NSDate *date = [dateFormatter dateFromString:self];
-    [dateFormatter release];
     
     return date;
 }
@@ -159,7 +158,7 @@
         else characters[length++] = '=';        
     }
 	
-    return [[[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES] autorelease];
+    return [[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES];
 }
 
 - (NSString *)stringByReversingString

@@ -43,7 +43,6 @@
                          image];
             [imageView setTag:kNavBarImageTag];
             [self insertSubview:imageView atIndex:0];
-            [imageView release];
         }
     }
     
@@ -102,7 +101,6 @@
         [progressView setFrame:frame];
         [progressView setTag:kNavBarProgressTag];
         [self addSubview:progressView];
-        [progressView release];
     }
     
     [progressView setProgress:percentage];

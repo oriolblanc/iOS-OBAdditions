@@ -15,10 +15,12 @@
 
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize
 {
+    __weak typeof(self) weakSelf = self;
+    
     [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         
-        UIFont *boldFont = [UIFont boldSystemFontOfSize:self.font.pointSize];
-        CTFontRef font = CTFontCreateWithName((CFStringRef)boldFont.fontName, fontSize, NULL);
+        UIFont *boldFont = [UIFont boldSystemFontOfSize:weakSelf.font.pointSize];
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldFont.fontName, fontSize, NULL);
         CGColorRef boldRangeColor = color.CGColor;
         
         if (font)
@@ -28,11 +30,11 @@
                 NSRange range = [rangeValue rangeValue]; 
                 if (range.location != NSNotFound)
                 {
-                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(id)font range:range];
+                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:range];
                     
-                    if (![color isEqual:self.textColor])
+                    if (![color isEqual:weakSelf.textColor])
                     {
-                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)boldRangeColor range:range];
+                        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)boldRangeColor range:range];
                     }
                 }
             }
@@ -76,9 +78,11 @@
 
 - (void)setText:(NSString *)text colorRanges:(NSArray *)ranges color:(UIColor *)color
 {
+    __weak typeof(self) weakSelf = self;
+    
     [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         
-        CTFontRef font = CTFontCreateWithName((CFStringRef)self.font.fontName, self.font.pointSize, NULL);
+        CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)weakSelf.font.fontName, weakSelf.font.pointSize, NULL);
         CGColorRef rangeColor = color.CGColor;
         
         for (NSValue *rangeValue in ranges)
@@ -86,11 +90,11 @@
             NSRange range = [rangeValue rangeValue];
             if (range.location != NSNotFound)
             {
-                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(id)font range:range];
+                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:range];
                 
-                if (![color isEqual:self.textColor])
+                if (![color isEqual:weakSelf.textColor])
                 {
-                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)rangeColor range:range];
+                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)rangeColor range:range];
                 }
             }
         }

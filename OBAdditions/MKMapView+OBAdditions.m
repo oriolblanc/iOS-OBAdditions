@@ -44,7 +44,6 @@
         {
             CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
             [locationsToConsider addObject:location];
-            [location release];
         }
     }
     
@@ -61,8 +60,8 @@
         topLeftCoord.latitude = fmin(topLeftCoord.latitude, location.coordinate.latitude); 
     } 
     
-    CLLocation *topLeftLocation = [[[CLLocation alloc] initWithLatitude:bottomRightCoord.latitude longitude:bottomRightCoord.longitude] autorelease];
-    CLLocation *bottomRightLocation = [[[CLLocation alloc] initWithLatitude:topLeftCoord.latitude longitude:topLeftCoord.longitude] autorelease];
+    CLLocation *topLeftLocation = [[CLLocation alloc] initWithLatitude:bottomRightCoord.latitude longitude:bottomRightCoord.longitude];
+    CLLocation *bottomRightLocation = [[CLLocation alloc] initWithLatitude:topLeftCoord.latitude longitude:topLeftCoord.longitude];
     
     CLLocationDistance meters = [bottomRightLocation distanceFromLocation:topLeftLocation];
     
@@ -99,7 +98,6 @@
 {
     CLLocation *pinLocation = [[CLLocation alloc ] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     CLLocationDistance distance = [pinLocation distanceFromLocation:self.userLocation.location];
-    [pinLocation release];
     
     return distance;
 }

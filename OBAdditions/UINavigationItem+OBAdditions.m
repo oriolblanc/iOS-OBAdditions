@@ -31,7 +31,6 @@
     UIImageView *aTitleView = [[UIImageView alloc] initWithImage:image];
     self.titleView = aTitleView;
     [self.titleView setFrame: CGRectMake(0, 0, aTitleView.frame.size.width, aTitleView.frame.size.height)];
-    [aTitleView release];
 }
 
 - (void)setTitle:(NSString*)title andSubtitle:(NSString*)subtitle
@@ -54,14 +53,14 @@
 - (UIView *)headerTitleAndSubtitleView
 {
     CGRect headerTitleSubtitleFrame = CGRectMake(0, 0, 200, 44);    
-    UIView *_headerTitleSubtitleView = [[[UILabel alloc] initWithFrame:headerTitleSubtitleFrame] autorelease];
+    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
     [_headerTitleSubtitleView setTag:kNavBarWithTitleAndSubtitle];
     _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
     _headerTitleSubtitleView.autoresizesSubviews = YES;
     
     CGRect titleFrame = CGRectMake(0, 0, 200, 30);  
         
-    UILabel *titleView = [[[UILabel alloc] initWithFrame:titleFrame] autorelease];
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
     [titleView setTag:kLabelTitle];
     titleView.backgroundColor = [UIColor clearColor];
     titleView.font = [UIFont boldSystemFontOfSize:15];
@@ -74,7 +73,7 @@
     [_headerTitleSubtitleView addSubview:titleView];
     
     CGRect subtitleFrame = CGRectMake(0, 19, 200, 22);   
-    UILabel *subtitleView = [[[UILabel alloc] initWithFrame:subtitleFrame] autorelease];
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
     [subtitleView setTag:kLabelSubtitle];
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:10];

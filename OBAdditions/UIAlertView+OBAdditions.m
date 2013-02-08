@@ -59,7 +59,6 @@ static char UIAlertViewBlockKey;
     }
     
     [alertView show];
-	[alertView release];
 }
 
 
