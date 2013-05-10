@@ -37,6 +37,8 @@
 #define LogSize(s)          NSLog(@"Size: %@", NSStringFromCGSize(s));
 #define LogMainThread()     NSLog(@"Main thread: %d", [[NSThread currentThread] isMainThread]);
 
+// Math
+#define ToRad(deg) 		( (M_PI * (deg)) / 180.0 )
 
 /* Blocks useful stuff */
 #define createBlockSafeSelf() __block typeof(self) blockSafeSelf = self;
