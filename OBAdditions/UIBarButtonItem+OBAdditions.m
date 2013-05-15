@@ -13,6 +13,14 @@ static char UIBarButtonItemBlockKey;
 
 @implementation UIBarButtonItem (OBAdditions)
 
++ (id)negativeBarButtonItemSpacerWithWidth:(CGFloat)width
+{
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -width;
+    
+    return negativeSpacer;
+}
+
 - (id)initWithTitle:(NSString *)title 
               style:(UIBarButtonItemStyle)style 
         tapCallback:(UIBarButtonItemCallback)callback

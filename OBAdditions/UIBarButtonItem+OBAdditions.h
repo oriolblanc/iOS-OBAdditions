@@ -13,6 +13,8 @@ typedef void (^UIBarButtonItemCallback)(UIBarButtonItem *button);
 
 @interface UIBarButtonItem (OBAdditions)
 
++ (id)negativeBarButtonItemSpacerWithWidth:(CGFloat)width;
+
 - (id)initWithTitle:(NSString *)title 
               style:(UIBarButtonItemStyle)style 
         tapCallback:(UIBarButtonItemCallback)callback;
