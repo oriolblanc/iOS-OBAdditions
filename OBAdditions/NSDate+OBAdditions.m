@@ -183,6 +183,15 @@
     return timeRemainingString;
 }
 
+- (NSString *)shortenedTimeAgoString
+{
+    NSString *timeAgoString = [self timeAgoString];
+    NSRange emptyStringRange = [timeAgoString rangeOfString:@" "];
+    
+    return [NSString stringWithFormat:@"%@%@", [timeAgoString substringWithRange:NSMakeRange(0, emptyStringRange.location)],
+            [timeAgoString substringWithRange:NSMakeRange(emptyStringRange.location+1, 1)]];
+}
+
 - (BOOL)isToday
 {
     NSDate * today = [NSDate date];

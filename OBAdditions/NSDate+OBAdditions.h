@@ -21,6 +21,7 @@
 
 - (NSString *)remainingTimeString;
 - (NSString *)timeAgoString;
+- (NSString *)shortenedTimeAgoString;
 
 - (BOOL)isToday;
 - (BOOL)isTomorrow;
