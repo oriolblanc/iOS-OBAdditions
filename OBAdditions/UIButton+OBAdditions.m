@@ -66,7 +66,7 @@ static char UIButtonBlockKey;
         titleLabel.tag = kLabelTitleTag;
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.font = [UIFont systemFontOfSize:10.0];
-        titleLabel.textAlignment = UITextAlignmentCenter;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [self addSubview:titleLabel];
     }
@@ -78,7 +78,7 @@ static char UIButtonBlockKey;
         subtitleLabel.tag = kLabelSubtitleTag;
         subtitleLabel.backgroundColor = [UIColor clearColor];
         subtitleLabel.font = [UIFont boldSystemFontOfSize:17.0];
-        subtitleLabel.textAlignment = UITextAlignmentCenter;
+        subtitleLabel.textAlignment = NSTextAlignmentCenter;
         
         [self addSubview:subtitleLabel];
     }
