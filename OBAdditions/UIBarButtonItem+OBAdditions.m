@@ -70,6 +70,26 @@ static char UIBarButtonItemBlockKey;
     return self;
 }
 
+- (id)initWithCustomImage:(UIImage *)image
+         highlightedImage:(UIImage *)highlightedImage
+              tapCallback:(UIBarButtonItemCallback)callback
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setImage:image forState:UIControlStateNormal];
+    [button setImage:highlightedImage forState:UIControlStateHighlighted];
+    button.frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
+    
+    if ((self = [self initWithCustomView:button]))
+    {
+        objc_setAssociatedObject(self, &UIBarButtonItemBlockKey, callback, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    }
+    
+    [button addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    return self;
+}
+
 - (void)buttonTapped
 {
     UIBarButtonItemCallback callback = (UIBarButtonItemCallback)objc_getAssociatedObject(self, &UIBarButtonItemBlockKey);
