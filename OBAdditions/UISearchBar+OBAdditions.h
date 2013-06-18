@@ -9,4 +9,6 @@
 
 - (UIView *)backgroundView;
 
+- (UITextField *)textField;
+
 @end

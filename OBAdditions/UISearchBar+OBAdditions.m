@@ -20,4 +20,19 @@
     return nil;
 }
 
+- (UITextField *)textField
+{
+    UITextField *view = nil;
+    
+    for(UIView *subview in self.subviews)
+    {
+        if ([subview isKindOfClass:[UITextField class]])
+        {
+            view = (UITextField *)subview;
+        }
+    }
+        
+    return view;
+}
+
 @end
