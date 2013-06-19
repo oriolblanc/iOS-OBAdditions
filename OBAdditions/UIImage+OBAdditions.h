@@ -7,4 +7,6 @@
 
 @interface UIImage (OBAdditions)
 
+- (UIImage *)grayScaleImage;
+
 @end
