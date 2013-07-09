@@ -34,6 +34,14 @@
     return [emailTest evaluateWithObject:self];
 }
 
+- (BOOL)isValidUsername
+{
+    NSString *usernameRegex = @"^[a-zA-Z0-9_]{3,15}$";
+    NSPredicate *usernameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", usernameRegex];
+    
+    return [usernameTest evaluateWithObject:self];
+}
+
 - (BOOL)isNumeric
 {
     NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
