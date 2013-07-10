@@ -49,6 +49,11 @@
     return [numberFormatter numberFromString:self] != nil;
 }
 
+- (BOOL)validRange:(NSRange)range
+{
+    return (range.location + range.length) <= self.length;
+}
+
 - (NSString *)capitalizeFirstLetter
 {
     return  [self stringByReplacingCharactersInRange:NSMakeRange(0,1)  

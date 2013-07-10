@@ -15,6 +15,8 @@
 - (BOOL)isValidUsername;
 - (BOOL)isNumeric;
 
+- (BOOL)validRange:(NSRange)range;
+
 - (NSString *)capitalizeFirstLetter;
 
 - (NSDate *)getDateFromJSON;
