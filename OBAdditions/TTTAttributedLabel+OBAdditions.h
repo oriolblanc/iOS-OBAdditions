@@ -10,6 +10,7 @@
 @interface TTTAttributedLabel (OBAdditions)
 
 // setting bold
+- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color boldFont:(UIFont *)boldFont fontSize:(CGFloat)fontSize;
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize;
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color;
 

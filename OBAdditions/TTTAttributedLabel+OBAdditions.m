@@ -13,13 +13,12 @@
 
 #pragma mark - Setting bold
 
-- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize
+- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color boldFont:(UIFont *)boldFont fontSize:(CGFloat)fontSize
 {
     __weak typeof(self) weakSelf = self;
     
     [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         
-        UIFont *boldFont = [UIFont boldSystemFontOfSize:weakSelf.font.pointSize];
         CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldFont.fontName, fontSize, NULL);
         CGColorRef boldRangeColor = color.CGColor;
         
@@ -27,7 +26,7 @@
         {
             for (NSValue *rangeValue in ranges)
             {
-                NSRange range = [rangeValue rangeValue]; 
+                NSRange range = [rangeValue rangeValue];
                 if (range.location != NSNotFound)
                 {
                     [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:range];
@@ -47,6 +46,11 @@
     
     self.layer.shouldRasterize = YES;
     self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+}
+
+- (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color fontSize:(CGFloat)fontSize
+{
+    [self setText:text boldRanges:ranges boldRangesColor:color boldFont:[UIFont boldSystemFontOfSize:self.font.pointSize] fontSize:fontSize];
 }
 
 - (void)setText:(NSString *)text boldRanges:(NSArray *)ranges boldRangesColor:(UIColor *)color 
