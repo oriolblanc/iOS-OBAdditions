@@ -11,7 +11,35 @@
 
 #import <CommonCrypto/CommonHMAC.h>
 
-@implementation NSString (OBAdditions) 
+@implementation NSString (OBAdditions)
+
++ (NSString *)truncatedStringForCount:(NSUInteger)count
+{
+    NSString *countString;
+    
+    if (count > 999999)
+    {
+        countString = [NSString stringWithFormat:@"%dm", count / 1000000];
+    }
+    else if (count > 999)
+    {
+        NSUInteger rest = count % 1000;
+        if (rest < 100)
+        {
+            countString = [NSString stringWithFormat:@"%dk", count / 1000];
+        }
+        else
+        {
+            countString = [NSString stringWithFormat:@"%d.%dk", count / 1000 , rest / 100];
+        }
+    }
+    else
+    {
+        countString = [NSString stringWithFormat:@"%d", count];
+    }
+    
+    return countString;
+}
 
 - (BOOL)containsString:(NSString *)string options:(NSStringCompareOptions)options 
 {

@@ -5,7 +5,9 @@
 //  Copyright 2011 Oriol Blanc. All rights reserved.
 //
 
-@interface NSString (OBAdditions) 
+@interface NSString (OBAdditions)
+
++ (NSString *)truncatedStringForCount:(NSUInteger)count;
 
 // check if string contains a substring
 - (BOOL)containsString:(NSString *)string;
