@@ -9,4 +9,11 @@
 
 - (UIImage *)grayScaleImage;
 
+/**
+ Create a placeholder uiimage dynamically with color.
+ 
+ @see http://ioscodesnippet.com/post/9247898208/creating-a-placeholder-uiimage-dynamically-with-color
+ */
++ (UIImage *)imageWithColor:(UIColor *)color;
+
 @end
