@@ -22,7 +22,7 @@
     self.titleView = button;
 }
 
-- (void)setImageForTitleView:(UIImage*)image
+- (void)setImageForTitleView:(UIImage *)image
 {
     if(image == NULL){ //might be called with NULL argument
         return;
@@ -33,7 +33,7 @@
     [self.titleView setFrame: CGRectMake(0, 0, aTitleView.frame.size.width, aTitleView.frame.size.height)];
 }
 
-- (void)setTitle:(NSString*)title andSubtitle:(NSString*)subtitle
+- (void)setTitle:(NSString *)title andSubtitle:(NSString *)subtitle
 {
     UIView* headerTitleSubtitleView = [self.titleView viewWithTag:kNavBarWithTitleAndSubtitle];
         
@@ -66,7 +66,6 @@
     titleView.font = [UIFont boldSystemFontOfSize:15];
     titleView.textAlignment = NSTextAlignmentCenter;
     titleView.textColor = [UIColor whiteColor];
-    titleView.shadowColor = [OBTheme colorForKey:kColorKeySubtitleShadowColor];
     titleView.shadowOffset = CGSizeMake(0, -1);
     titleView.text = @"";
     titleView.adjustsFontSizeToFitWidth = YES;
@@ -78,8 +77,7 @@
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:10];
     subtitleView.textAlignment = NSTextAlignmentCenter;
-    subtitleView.textColor = [UIColor colorWithWholeRed:217 wholeGreen:198 wholeBlue:234 alpha:1];
-    subtitleView.shadowColor = [OBTheme colorForKey:kColorKeySubtitleShadowColor];
+    subtitleView.textColor = [UIColor colorWithRed:217/255 green:198/255 blue:234/255 alpha:1];
     subtitleView.shadowOffset = CGSizeMake(0, -1);
     subtitleView.text = @"";
     subtitleView.adjustsFontSizeToFitWidth = YES;

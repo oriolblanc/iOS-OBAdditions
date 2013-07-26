@@ -7,10 +7,9 @@
 
 @interface UINavigationItem (OBAdditions)
 
-
 - (void)setButtonForTitleView:(UIButton *)button;
-- (void)setImageForTitleView:(UIImage*)image;
-- (void)setTitle:(NSString*)title andSubtitle:(NSString*)subtitle;
+- (void)setImageForTitleView:(UIImage *)image;
+- (void)setTitle:(NSString *)title andSubtitle:(NSString *)subtitle;
 
 @end 
 
