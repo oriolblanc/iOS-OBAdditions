@@ -22,6 +22,46 @@ static char UIViewMaskAnimationKey;
     }
 }
 
+- (UIView *)searchBarBackgroundView
+{
+    UIView *view = nil;
+    
+    for (UIView *subview in self.subviews)
+    {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")])
+        {
+            view = subview;
+            break;
+        }
+        else
+        {
+            view = [subview searchBarBackgroundView];
+        }
+    }
+    
+    return view;
+}
+
+- (UITextField *)textField
+{
+    UITextField *view = nil;
+    
+    for(UIView *subview in self.subviews)
+    {
+        if ([subview isKindOfClass:[UITextField class]])
+        {
+            view = (UITextField *)subview;
+            break;
+        }
+        else
+        {
+            view = [subview textField];
+        }
+    }
+    
+    return view;
+}
+
 #pragma mark - Animate Fade In / Fade Out
 
 - (void)animateFade:(UIViewFadeType)fadeInOrOut

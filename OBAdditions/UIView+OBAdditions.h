@@ -15,6 +15,10 @@ typedef enum
 
 - (void)removeAllSubviews;
 
+- (UIView *)searchBarBackgroundView;
+
+- (UITextField *)textField;
+
 #pragma mark - Fade In / Out animations
 
 - (void)animateFade:(UIViewFadeType)fadeInOrOut

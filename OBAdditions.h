@@ -26,7 +26,6 @@
 #import "UIView+OBAdditions.h"
 #import "UIImage+OBAdditions.h"
 #import "UIImageView+OBAdditions.h"
-#import "UISearchBar+OBAdditions.h"
 #import "UISwitch+OBAdditions.h"
 #import "UITextView+OBAdditions.h"
 #import "UIWebView+OBAdditions.h"
