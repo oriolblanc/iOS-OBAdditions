@@ -19,6 +19,10 @@ typedef enum
 
 - (UITextField *)textField;
 
+#pragma mark - UIKit Dynamics & effects
+
+- (void)addParallaxEffectWithMaxOffset:(CGFloat)maxOffset;
+
 #pragma mark - Fade In / Out animations
 
 - (void)animateFade:(UIViewFadeType)fadeInOrOut
