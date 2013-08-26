@@ -84,7 +84,7 @@
     // Grayscale color space
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
     // Create bitmap content with current image size and grayscale colorspace
-    CGContextRef context = CGBitmapContextCreate(nil, self.size.width * self.scale, self.size.height * self.scale, 8, 0, colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
+    CGContextRef context = CGBitmapContextCreate(nil, self.size.width * self.scale, self.size.height * self.scale, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
     // Draw image into current context, with specified rectangle
     // using previously defined context (with grayscale colorspace)
     CGContextDrawImage(context, imageRect, [self CGImage]);
@@ -94,7 +94,7 @@
     CGColorSpaceRelease(colorSpace);
     CGContextRelease(context);
     // make a new alpha-only graphics context
-    context = CGBitmapContextCreate(nil, self.size.width * self.scale, self.size.height * self.scale, 8, 0, nil, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedLast);
+    context = CGBitmapContextCreate(nil, self.size.width * self.scale, self.size.height * self.scale, 8, 0, nil, (CGBitmapInfo)kCGImageAlphaOnly);
     // draw image into context with no colorspace
     CGContextDrawImage(context, imageRect, [self CGImage]);
     // create alpha bitmap mask from current context
