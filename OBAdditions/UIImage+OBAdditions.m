@@ -78,38 +78,29 @@
 }
 
 - (UIImage *)grayScaleImage
-{
-    // Create image rectangle with current image width/height
-    CGRect imageRect = CGRectMake(0, 0, self.size.width * self.scale, self.size.height * self.scale);
-    // Grayscale color space
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-    // Create bitmap content with current image size and grayscale colorspace
-    CGContextRef context = CGBitmapContextCreate(nil, self.size.width * self.scale, self.size.height * self.scale, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
-    // Draw image into current context, with specified rectangle
-    // using previously defined context (with grayscale colorspace)
-    CGContextDrawImage(context, imageRect, [self CGImage]);
-    // Create bitmap image info from pixel data in current context
-    CGImageRef grayImage = CGBitmapContextCreateImage(context);
-    // release the colorspace and graphics context
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-    // make a new alpha-only graphics context
-    context = CGBitmapContextCreate(nil, self.size.width * self.scale, self.size.height * self.scale, 8, 0, nil, (CGBitmapInfo)kCGImageAlphaOnly);
-    // draw image into context with no colorspace
-    CGContextDrawImage(context, imageRect, [self CGImage]);
-    // create alpha bitmap mask from current context
-    CGImageRef mask = CGBitmapContextCreateImage(context);
-    // release graphics context
-    CGContextRelease(context);
-    // make UIImage from grayscale image with alpha mask
-    CGImageRef cgImage = CGImageCreateWithMask(grayImage, mask);
-    UIImage *grayScaleImage = [UIImage imageWithCGImage:cgImage scale:self.scale orientation:self.imageOrientation];
-    // release the CG images
-    CGImageRelease(cgImage);
-    CGImageRelease(grayImage);
-    CGImageRelease(mask);
-    // return the new grayscale image
-    return grayScaleImage;
+{    
+    UIImage *image;
+    UIColor *color = [UIColor grayColor];
+    
+    UIGraphicsBeginImageContext([self size]);
+
+    CGRect rect = CGRectZero;
+    rect.size = [self size];
+    
+    // Composite tint color at its own opacity.
+    [color set];
+    UIRectFill(rect);
+    
+    // Mask tint color-swatch to this image's opaque mask.
+    // We want behaviour like NSCompositeDestinationIn on Mac OS X.
+    [self drawInRect:rect blendMode:kCGBlendModeDestinationIn alpha:1.0];
+    
+    // Finally, composite this image over the tinted mask at desired opacity.
+    [self drawInRect:rect blendMode:kCGBlendModeSourceAtop alpha:0.5];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (UIImage *)fixOrientation {
