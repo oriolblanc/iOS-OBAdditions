@@ -26,5 +26,6 @@ typedef void (^UIButtonCallback)(UIButton *button);
 
 - (UILabel *)additionalTitleLabel;
 - (UILabel *)additionalSubtitleLabel;
+- (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state;
 
 @end
