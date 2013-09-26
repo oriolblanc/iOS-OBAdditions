@@ -78,8 +78,10 @@
 }
 
 - (BOOL)validRange:(NSRange)range
-{
-    return (range.location + range.length) <= self.length;
+{    
+    return ((range.location != NSNotFound && range.length != NSNotFound) &&
+            (range.location <= self.length && range.length <= self.length) &&
+            ((range.location + range.length) <= self.length));
 }
 
 - (NSString *)capitalizeFirstLetter
