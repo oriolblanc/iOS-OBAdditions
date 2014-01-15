@@ -29,6 +29,9 @@ typedef void (^UIBarButtonItemCallback)(UIBarButtonItem *button);
               tapCallback:(UIBarButtonItemCallback)callback;
 
 - (id)initWithCustomImage:(UIImage *)image
+         highlightedImage:(UIImage *)highlightedImage;
+
+- (id)initWithCustomImage:(UIImage *)image
          highlightedImage:(UIImage *)highlightedImage
               tapCallback:(UIBarButtonItemCallback)callback;
 

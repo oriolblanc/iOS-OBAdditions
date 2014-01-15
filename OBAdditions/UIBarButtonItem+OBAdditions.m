@@ -72,6 +72,20 @@ static char UIBarButtonItemBlockKey;
 
 - (id)initWithCustomImage:(UIImage *)image
          highlightedImage:(UIImage *)highlightedImage
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setImage:image forState:UIControlStateNormal];
+    [button setImage:highlightedImage forState:UIControlStateHighlighted];
+    button.frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
+    
+    self = [self initWithCustomView:button];
+    
+    return self;
+}
+
+- (id)initWithCustomImage:(UIImage *)image
+         highlightedImage:(UIImage *)highlightedImage
               tapCallback:(UIBarButtonItemCallback)callback
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
