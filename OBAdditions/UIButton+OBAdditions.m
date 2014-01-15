@@ -12,6 +12,7 @@
 #define kLabelSubtitleTag 2342
 
 static char UIButtonBlockKey;
+static char UIButtonAdditionalBackground;
 
 @implementation UIButton (OBAdditions)
 
@@ -95,9 +96,26 @@ static char UIButtonBlockKey;
     return (UILabel *)[self viewWithTag:kLabelSubtitleTag];
 }
 
+- (UIView *)additionalBackgroundView
+{
+    UIView *backgroundView = (UIView *)objc_getAssociatedObject(self, &UIButtonAdditionalBackground);
+    if (backgroundView == nil)
+    {
+        backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        [self setAdditionalBackgroundView:backgroundView];
+    }
+    
+    return backgroundView;
+}
+
+- (void)setAdditionalBackgroundView:(UIView *)backgroundView
+{
+    objc_setAssociatedObject(self, &UIButtonAdditionalBackground, backgroundView, OBJC_ASSOCIATION_RETAIN);
+}
+
 - (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state
 {
-    UIView *colorView = [[UIView alloc] initWithFrame:self.frame];
+    UIView *colorView = [self additionalBackgroundView];
     colorView.backgroundColor = color;
     
     UIGraphicsBeginImageContext(colorView.bounds.size);
