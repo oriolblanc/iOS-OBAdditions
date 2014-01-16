@@ -23,6 +23,11 @@ typedef enum
 
 - (void)addParallaxEffectWithMaxOffset:(CGFloat)maxOffset;
 
+/**
+ Get the first parent collection view
+ */
+- (UICollectionView *)superCollectionView;
+
 #pragma mark - Fade In / Out animations
 
 - (void)animateFade:(UIViewFadeType)fadeInOrOut

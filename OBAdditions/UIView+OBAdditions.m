@@ -143,6 +143,25 @@ static char UIViewMaskAnimationKey;
     [self addMotionEffect:effectGroup];
 }
 
+#pragma mark - Get Parent Collection View
+
+- (UICollectionView *)superCollectionView
+{
+	UIView *superview = self.superview;
+    
+	while (superview != nil)
+    {
+		if ([superview isKindOfClass:[UICollectionView class]])
+        {
+			return (id)superview;
+		}
+        
+		superview = [superview superview];
+	}
+    
+	return nil;
+}
+
 #pragma mark - Animations Callback
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
