@@ -8,7 +8,6 @@
 @interface UINavigationBar (OBAdditions)
 
 - (void)customizeBackgroundImage:(UIImage *)image tintColor:(UIColor *)tintColor;
-- (void)setTitleTextAttributes;
 
 - (void)additionalInsertSubview:(UIView *)view atIndex:(NSInteger)index;
 - (void)additionalSendSubviewToBack:(UIView *)view;

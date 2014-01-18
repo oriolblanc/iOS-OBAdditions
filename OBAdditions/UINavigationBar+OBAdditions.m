@@ -49,19 +49,6 @@
     self.tintColor = tintColor;
 }
 
-- (void)setTitleTextAttributes
-{
-    if ([self respondsToSelector:@selector(setTitleTextAttributes:)]) // Only iOS5+
-    {
-        UIColor *titleViewTextColor = [UIColor whiteColor];
-        UIColor *titleViewShadowColor = [UIColor colorWithWhite:0.1 alpha:0.6];
-        CGSize titleViewShadowOffset = CGSizeMake(0, -1);
-        
-        NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:titleViewTextColor, UITextAttributeTextColor, titleViewShadowColor, UITextAttributeTextShadowColor, [NSValue valueWithCGSize:titleViewShadowOffset], UITextAttributeTextShadowOffset, nil];
-        [self setTitleTextAttributes:textAttributes];
-    }
-}
-
 - (void)additionalInsertSubview:(UIView *)view atIndex:(NSInteger)index
 {
     [self additionalInsertSubview:view atIndex:index];
