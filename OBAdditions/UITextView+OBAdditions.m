@@ -11,9 +11,10 @@
 
 - (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)hor vertically:(CGFloat)ver
 {
-	return [self.text sizeWithFont:self.font
-                 constrainedToSize:CGSizeMake(hor, ver)
-                     lineBreakMode:NSLineBreakByWordWrapping];
+	return [self.text boundingRectWithSize:CGSizeMake(hor, ver)
+                                   options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                attributes:@{NSFontAttributeName: self.font}
+                                   context:nil].size;
 }
 
 - (CGSize)suggestedSizeConstrainedHorizontally:(CGFloat)max
