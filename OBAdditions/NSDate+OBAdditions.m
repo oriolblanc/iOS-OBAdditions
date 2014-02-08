@@ -177,7 +177,7 @@
         timeRemainingString = [NSString stringWithFormat:@"%d %@", minutes, timelapse];    
     } else {
         NSString *timelapse = seconds == 1 ? NSLocalizedString(@"Second", @"") : NSLocalizedString(@"Seconds", @"");
-        timeRemainingString = [NSString stringWithFormat:@"%d %@", seconds, timelapse]; 
+        timeRemainingString = [NSString stringWithFormat:@"%d %@", seconds, timelapse];
     }
     
     return timeRemainingString;
@@ -188,8 +188,18 @@
     NSString *timeAgoString = [self timeAgoString];
     NSRange emptyStringRange = [timeAgoString rangeOfString:@" "];
     
-    return [NSString stringWithFormat:@"%@%@", [timeAgoString substringWithRange:NSMakeRange(0, emptyStringRange.location)],
-            [timeAgoString substringWithRange:NSMakeRange(emptyStringRange.location+1, 1)]];
+    return [self isNow] ? NSLocalizedString(@"kRightNowShort", @"Right Now") :
+                              [NSString stringWithFormat:@"%@%@", [timeAgoString substringWithRange:NSMakeRange(0, emptyStringRange.location)],
+                                    [timeAgoString substringWithRange:NSMakeRange(emptyStringRange.location+1, 1)]];
+}
+
+- (BOOL)isNow
+{
+    NSTimeInterval timeIntervalFromNow = MAX(-[self timeIntervalSinceNow], 0);
+
+    int seconds = timeIntervalFromNow;
+    
+    return seconds <= 9;
 }
 
 - (BOOL)isToday

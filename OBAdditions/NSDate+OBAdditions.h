@@ -23,6 +23,7 @@
 - (NSString *)timeAgoString;
 - (NSString *)shortenedTimeAgoString;
 
+- (BOOL)isNow;
 - (BOOL)isToday;
 - (BOOL)isTomorrow;
 
