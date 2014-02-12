@@ -16,6 +16,9 @@
 // Generate a Random Color
 + (UIColor *)randomColor;
 
+// Compares to UIColors
+- (BOOL)isEqualToColor:(UIColor *)otherColor;
+
 // Converts an HSL color value to RGB. Conversion formula
 // Assumes h, s, and l are contained in the set [0, 1]
 + (UIColor *)colorWithHue:(CGFloat)hue saturation:(CGFloat)saturation lightness:(CGFloat)lightness alpha:(CGFloat)alpha;
