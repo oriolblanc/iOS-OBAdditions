@@ -19,23 +19,23 @@
     
     if (count > 999999)
     {
-        countString = [NSString stringWithFormat:@"%dm", count / 1000000];
+        countString = [NSString stringWithFormat:@"%lum", count / 1000000];
     }
     else if (count > 999)
     {
         NSUInteger rest = count % 1000;
         if (rest < 100)
         {
-            countString = [NSString stringWithFormat:@"%dk", count / 1000];
+            countString = [NSString stringWithFormat:@"%luk", count / 1000];
         }
         else
         {
-            countString = [NSString stringWithFormat:@"%d.%dk", count / 1000 , rest / 100];
+            countString = [NSString stringWithFormat:@"%lu.%luk", count / 1000 , rest / 100];
         }
     }
     else
     {
-        countString = [NSString stringWithFormat:@"%d", count];
+        countString = [NSString stringWithFormat:@"%lu", (unsigned long)count];
     }
     
     return countString;
@@ -155,7 +155,7 @@
 - (NSString *)stringToSha1{
     const char *cStr = [self UTF8String];
     unsigned char result[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(cStr, strlen(cStr), result);
+    CC_SHA1(cStr, (CC_LONG)strlen(cStr), result);
     NSString *s = [NSString  stringWithFormat:
                    @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
                    result[0], result[1], result[2], result[3], result[4],
@@ -242,7 +242,7 @@
     return ![NSString isStringEmpty:aString];
 }
 
-+ (NSString *)randomStringWithLength:(int)length
++ (NSString *)randomStringWithLength:(NSUInteger)length
 {
     static NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     

@@ -53,8 +53,8 @@
     NSDateFormatter *dateFormatter = [NSDate dateFormatterWithUserLanguage];
     [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     
-    NSString *dateToTransform = [NSString stringWithFormat:@"%i/%i/%i", 
-                                 day, month, year];
+    NSString *dateToTransform = [NSString stringWithFormat:@"%lu/%lu/%lu", 
+                                 (unsigned long)day, (unsigned long)month, (unsigned long)year];
     return [dateFormatter dateFromString:dateToTransform];
 }
 

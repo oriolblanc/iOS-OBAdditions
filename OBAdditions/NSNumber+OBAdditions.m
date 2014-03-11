@@ -21,7 +21,7 @@
 
 + (NSNumber *)randomNumberBetweenNumber:(NSUInteger)minNumber andNumber:(NSUInteger)maxNumber
 {
-    return [NSNumber numberWithInt:[self randomIntBetweenNumber:minNumber andNumber:maxNumber]];
+    return [NSNumber numberWithUnsignedInteger:[self randomIntBetweenNumber:minNumber andNumber:maxNumber]];
 }
 
 + (BOOL)randomBool

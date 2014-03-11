@@ -38,7 +38,7 @@
 + (BOOL)isStringNotEmpty:(NSString *)aString;
 
 // Random
-+ (NSString *)randomStringWithLength:(int)length;
++ (NSString *)randomStringWithLength:(NSUInteger)length;
 + (NSString *)randomStringWithLengthBetween:(int)minLength and:(int)maxLength;
 
 @end 

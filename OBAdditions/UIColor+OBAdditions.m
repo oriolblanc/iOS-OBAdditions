@@ -31,7 +31,7 @@
         NSUInteger componentIntValue;
         [scanner scanHexInt:&componentIntValue];
         
-        [colorFloatComponents addObject:[NSNumber numberWithInt:componentIntValue]];
+        [colorFloatComponents addObject:[NSNumber numberWithUnsignedInteger:componentIntValue]];
     }
     
     return [self colorWithWholeRed:[[colorFloatComponents objectAtIndex:0] intValue] wholeGreen:[[colorFloatComponents objectAtIndex:1] intValue] wholeBlue:[[colorFloatComponents objectAtIndex:2] intValue] alpha:1.0];

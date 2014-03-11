@@ -9,7 +9,7 @@
 
 @class UIAlertView;
 
-typedef void (^UIAlertViewCallback)(UIAlertView *alertView, int buttonIndex);
+typedef void (^UIAlertViewCallback)(UIAlertView *alertView, NSUInteger buttonIndex);
 
 @interface UIAlertView (OBAdditions)
 
