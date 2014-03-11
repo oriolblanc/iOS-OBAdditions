@@ -28,7 +28,7 @@
     {
         NSString *componentString = [hexString substringWithRange:NSMakeRange(i * 2, 2)];
         NSScanner *scanner = [NSScanner scannerWithString:componentString];
-        NSUInteger componentIntValue;
+        unsigned int componentIntValue;
         [scanner scanHexInt:&componentIntValue];
         
         [colorFloatComponents addObject:[NSNumber numberWithUnsignedInteger:componentIntValue]];
