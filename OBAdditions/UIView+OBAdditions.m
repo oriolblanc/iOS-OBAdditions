@@ -62,6 +62,29 @@ static char UIViewMaskAnimationKey;
     return view;
 }
 
+/**
+ Get the current first responder without using a private API
+ 
+ http://stackoverflow.com/questions/1823317/get-the-current-first-responder-without-using-a-private-api
+ */
+- (UIView *)findFirstResponder
+{
+    if (self.isFirstResponder)
+        return self;
+    
+    for (UIView *subView in self.subviews)
+    {
+        UIView *firstResponder = [subView findFirstResponder];
+        
+        if (firstResponder != nil)
+        {
+            return firstResponder;
+        }
+    }
+    
+    return nil;
+}
+
 #pragma mark - Animate Fade In / Fade Out
 
 - (void)animateFade:(UIViewFadeType)fadeInOrOut

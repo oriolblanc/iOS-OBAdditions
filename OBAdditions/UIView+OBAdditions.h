@@ -19,6 +19,8 @@ typedef enum
 
 - (UITextField *)textField;
 
+- (UIView *)findFirstResponder;
+
 #pragma mark - UIKit Dynamics & effects
 
 - (void)addParallaxEffectWithMaxOffset:(CGFloat)maxOffset;
