@@ -19,23 +19,23 @@
     
     if (count > 999999)
     {
-        countString = [NSString stringWithFormat:@"%um", count / 1000000];
+        countString = [NSString stringWithFormat:@"%lum", (unsigned long) count / 1000000];
     }
     else if (count > 999)
     {
         NSUInteger rest = count % 1000;
         if (rest < 100)
         {
-            countString = [NSString stringWithFormat:@"%uk", count / 1000];
+            countString = [NSString stringWithFormat:@"%luk", (unsigned long) count / 1000];
         }
         else
         {
-            countString = [NSString stringWithFormat:@"%u.%uk", count / 1000 , rest / 100];
+            countString = [NSString stringWithFormat:@"%lu.%luk", ((unsigned long) count) / 1000 , ((unsigned long) rest) / 100];
         }
     }
     else
     {
-        countString = [NSString stringWithFormat:@"%u", count];
+        countString = [NSString stringWithFormat:@"%lu", (unsigned long) count];
     }
     
     return countString;
